@@ -51,6 +51,7 @@
             BtnServers.Name = "BtnServers";
             BtnServers.Size = new Size(92, 36);
             BtnServers.Text = "Servers";
+            BtnServers.Click += BtnServers_Click;
             // 
             // BtnPipelines
             // 
@@ -59,6 +60,7 @@
             BtnPipelines.Name = "BtnPipelines";
             BtnPipelines.Size = new Size(104, 36);
             BtnPipelines.Text = "Pipelines";
+            BtnPipelines.Click += BtnPipelines_Click;
             // 
             // FrmMain
             // 
@@ -67,7 +69,7 @@
             ClientSize = new Size(800, 450);
             Controls.Add(ToolBar);
             Name = "FrmMain";
-            Text = "Digao Net Deploy - Manager";
+            Text = "Digao Net Deploy";
             ToolBar.ResumeLayout(false);
             ToolBar.PerformLayout();
             ResumeLayout(false);
