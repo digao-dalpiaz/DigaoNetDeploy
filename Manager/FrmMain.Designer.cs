@@ -66,12 +66,13 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(700, 338);
+            ClientSize = new Size(700, 473);
             Controls.Add(ToolBar);
             Margin = new Padding(3, 2, 3, 2);
             Name = "FrmMain";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Digao Net Deploy";
+            Load += FrmMain_Load;
             ToolBar.ResumeLayout(false);
             ToolBar.PerformLayout();
             ResumeLayout(false);

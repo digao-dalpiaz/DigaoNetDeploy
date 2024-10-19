@@ -28,81 +28,86 @@
         /// </summary>
         private void InitializeComponent()
         {
-            listBox1 = new ListBox();
-            toolStrip1 = new ToolStrip();
+            List = new ListBox();
+            ToolBar = new ToolStrip();
             BtnAdd = new ToolStripButton();
             BtnEdit = new ToolStripButton();
             BtnDelete = new ToolStripButton();
-            toolStrip1.SuspendLayout();
+            ToolBar.SuspendLayout();
             SuspendLayout();
             // 
-            // listBox1
+            // List
             // 
-            listBox1.Dock = DockStyle.Fill;
-            listBox1.FormattingEnabled = true;
-            listBox1.IntegralHeight = false;
-            listBox1.ItemHeight = 15;
-            listBox1.Location = new Point(0, 25);
-            listBox1.Name = "listBox1";
-            listBox1.Size = new Size(420, 313);
-            listBox1.TabIndex = 0;
+            List.Dock = DockStyle.Fill;
+            List.FormattingEnabled = true;
+            List.IntegralHeight = false;
+            List.ItemHeight = 15;
+            List.Location = new Point(0, 31);
+            List.Name = "List";
+            List.Size = new Size(516, 406);
+            List.TabIndex = 0;
             // 
-            // toolStrip1
+            // ToolBar
             // 
-            toolStrip1.Items.AddRange(new ToolStripItem[] { BtnAdd, BtnEdit, BtnDelete });
-            toolStrip1.Location = new Point(0, 0);
-            toolStrip1.Name = "toolStrip1";
-            toolStrip1.Size = new Size(420, 25);
-            toolStrip1.TabIndex = 1;
-            toolStrip1.Text = "toolStrip1";
+            ToolBar.ImageScalingSize = new Size(24, 24);
+            ToolBar.Items.AddRange(new ToolStripItem[] { BtnAdd, BtnEdit, BtnDelete });
+            ToolBar.Location = new Point(0, 0);
+            ToolBar.Name = "ToolBar";
+            ToolBar.Size = new Size(516, 31);
+            ToolBar.TabIndex = 1;
+            ToolBar.Text = "toolStrip1";
             // 
             // BtnAdd
             // 
             BtnAdd.Image = Properties.Resources.add;
             BtnAdd.ImageTransparentColor = Color.Magenta;
             BtnAdd.Name = "BtnAdd";
-            BtnAdd.Size = new Size(51, 22);
+            BtnAdd.Size = new Size(59, 28);
             BtnAdd.Text = "New";
+            BtnAdd.Click += BtnAdd_Click;
             // 
             // BtnEdit
             // 
             BtnEdit.Image = Properties.Resources.edit;
             BtnEdit.ImageTransparentColor = Color.Magenta;
             BtnEdit.Name = "BtnEdit";
-            BtnEdit.Size = new Size(47, 22);
+            BtnEdit.Size = new Size(55, 28);
             BtnEdit.Text = "Edit";
+            BtnEdit.Click += BtnEdit_Click;
             // 
             // BtnDelete
             // 
             BtnDelete.Image = Properties.Resources.delete;
             BtnDelete.ImageTransparentColor = Color.Magenta;
             BtnDelete.Name = "BtnDelete";
-            BtnDelete.Size = new Size(70, 22);
+            BtnDelete.Size = new Size(78, 28);
             BtnDelete.Text = "Remove";
+            BtnDelete.Click += BtnDelete_Click;
             // 
             // FrmServers
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(420, 338);
-            Controls.Add(listBox1);
-            Controls.Add(toolStrip1);
+            ClientSize = new Size(516, 437);
+            Controls.Add(List);
+            Controls.Add(ToolBar);
             Margin = new Padding(3, 2, 3, 2);
             MinimizeBox = false;
             Name = "FrmServers";
             ShowInTaskbar = false;
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Servers";
-            toolStrip1.ResumeLayout(false);
-            toolStrip1.PerformLayout();
+            Load += FrmServers_Load;
+            ToolBar.ResumeLayout(false);
+            ToolBar.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private ListBox listBox1;
-        private ToolStrip toolStrip1;
+        private ListBox List;
+        private ToolStrip ToolBar;
         private ToolStripButton BtnAdd;
         private ToolStripButton BtnEdit;
         private ToolStripButton BtnDelete;

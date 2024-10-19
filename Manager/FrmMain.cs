@@ -7,6 +7,11 @@ namespace Manager
             InitializeComponent();
         }
 
+        private void FrmMain_Load(object sender, EventArgs e)
+        {
+            ConfigLoader.Load();
+        }
+
         private void BtnServers_Click(object sender, EventArgs e)
         {
             var f = new FrmServers();
@@ -18,5 +23,7 @@ namespace Manager
             var f = new FrmPipelines();
             f.ShowDialog();
         }
+
+        
     }
 }
