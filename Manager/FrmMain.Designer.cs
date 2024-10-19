@@ -40,7 +40,7 @@
             ToolBar.Items.AddRange(new ToolStripItem[] { BtnServers, BtnPipelines });
             ToolBar.Location = new Point(0, 0);
             ToolBar.Name = "ToolBar";
-            ToolBar.Size = new Size(800, 39);
+            ToolBar.Size = new Size(700, 39);
             ToolBar.TabIndex = 0;
             ToolBar.Text = "toolStrip1";
             // 
@@ -49,7 +49,7 @@
             BtnServers.Image = Properties.Resources.server;
             BtnServers.ImageTransparentColor = Color.Magenta;
             BtnServers.Name = "BtnServers";
-            BtnServers.Size = new Size(92, 36);
+            BtnServers.Size = new Size(80, 36);
             BtnServers.Text = "Servers";
             BtnServers.Click += BtnServers_Click;
             // 
@@ -58,17 +58,19 @@
             BtnPipelines.Image = Properties.Resources.pipeline;
             BtnPipelines.ImageTransparentColor = Color.Magenta;
             BtnPipelines.Name = "BtnPipelines";
-            BtnPipelines.Size = new Size(104, 36);
+            BtnPipelines.Size = new Size(90, 36);
             BtnPipelines.Text = "Pipelines";
             BtnPipelines.Click += BtnPipelines_Click;
             // 
             // FrmMain
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(700, 338);
             Controls.Add(ToolBar);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "FrmMain";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Digao Net Deploy";
             ToolBar.ResumeLayout(false);
             ToolBar.PerformLayout();
