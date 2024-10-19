@@ -6,6 +6,11 @@ namespace Server.Controllers
     [Route("[controller]")]
     public class ApiController : ControllerBase
     {
-        
+
+        [HttpGet("GetVersion")]
+        public string GetVersion()
+        {
+            return "1.0";
+        }
     }
 }
