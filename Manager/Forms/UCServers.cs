@@ -115,14 +115,23 @@ namespace Manager
             });
         }
 
+        private static Server GetServerFromTunnel(SshClient tunnel)
+        {
+            return Vars.Config.Servers.Find(x => x.Tunnel == tunnel);
+        }
+
         private void Tunnel_ServerIdentificationReceived(object sender, SshIdentificationEventArgs e)
         {
-            LogService.Log("IDENT: " + e.SshIdentification.ToString());
+            var server = GetServerFromTunnel((SshClient)sender);
+
+            LogService.Log($"{server.Name} > Server identification: {e.SshIdentification}");
         }
 
         private void Tunnel_ErrorOccurred(object sender, ExceptionEventArgs e)
         {
-            LogService.Log("ERROR: " + e.Exception.Message, Color.Crimson);
+            var server = GetServerFromTunnel((SshClient)sender);
+
+            LogService.Log($"{server.Name} > ERROR: {e.Exception.Message}", Color.Crimson);
         }
 
         private void BtnDisconnect_Click(object sender, EventArgs e)
