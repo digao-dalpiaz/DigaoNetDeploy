@@ -76,7 +76,12 @@ namespace Manager
                 return;
             }
 
+            Vars.PipelineRunning = true;
 
+            Task.Run(() =>
+            {
+                
+            });
         }
     }
 }
