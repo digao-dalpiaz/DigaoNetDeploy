@@ -16,12 +16,18 @@ namespace Manager
             MyToolStripRenderer.ConfigToolStrip(ToolBar);
             List.BackColor = Vars.BACKGROUND;
 
-            _listEngine = new(Vars.Config.Pipelines, List, "Pipeline");
+            _listEngine = new(Vars.Config.Pipelines, List, "Pipeline",
+                BtnEdit, BtnDelete, BtnUp, BtnDown);
         }
 
         private void UCPipelines_Load(object sender, EventArgs e)
         {
-            _listEngine.FillList();
+            _listEngine.Init();
+        }
+
+        private void List_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            _listEngine.UpdateButtons();
         }
 
         private void BtnAdd_Click(object sender, EventArgs e)
@@ -62,5 +68,6 @@ namespace Manager
             _listEngine.MoveDown();
         }
 
+        
     }
 }

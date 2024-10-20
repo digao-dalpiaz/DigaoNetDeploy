@@ -51,6 +51,7 @@
             List.Size = new Size(656, 385);
             List.TabIndex = 3;
             List.DrawItem += List_DrawItem;
+            List.SelectedIndexChanged += List_SelectedIndexChanged;
             List.DoubleClick += List_DoubleClick;
             // 
             // ToolBar

@@ -3,15 +3,31 @@ using System.Reflection;
 
 namespace Manager.Utility
 {
-    internal class ListEngine<T, TForm>(List<T> _storageList, ListBox _listBox, string _ident) where TForm : Form, new() where T : NamedClass
+    internal class ListEngine<T, TForm>(List<T> _storageList, ListBox _listBox, string _ident,
+        ToolStripButton btnEdit, ToolStripButton btnDelete, ToolStripButton btnMoveUp, ToolStripButton btnMoveDown)
+        where TForm : Form, new() where T : NamedClass
     {
 
-        public void FillList()
+        public void Init()
         {
+            UpdateButtons();
+
             foreach (var obj in _storageList)
             {
                 _listBox.Items.Add(obj);
             }
+        }
+
+        public void UpdateButtons()
+        {
+            var index = _listBox.SelectedIndex;
+            bool selected = index != -1;
+
+            btnEdit.Enabled = selected;
+            btnDelete.Enabled = selected;
+
+            btnMoveUp.Enabled = index > 0;
+            btnMoveDown.Enabled = index < _listBox.Items.Count-1;
         }
 
         private static PropertyInfo GetReturningObjProp()
@@ -37,7 +53,6 @@ namespace Manager.Utility
         public void Edit()
         {
             var obj = (T)_listBox.SelectedItem;
-            if (obj == null) return;
 
             var f = new TForm();
             GetReturningObjProp().SetValue(f, obj);
@@ -52,7 +67,6 @@ namespace Manager.Utility
         public void Delete()
         {
             var obj = (T)_listBox.SelectedItem;
-            if (obj == null) return;
 
             if (MessageBox.Show($"Delete {_ident} '{obj.Name}'?", $"Delete {_ident}",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -67,10 +81,7 @@ namespace Manager.Utility
         private void MoveItem(int flag)
         {
             var index = _listBox.SelectedIndex;
-            if (index == -1) return;
-
             var newIndex = index + flag;
-            if (newIndex < 0 || newIndex > _listBox.Items.Count - 1) return;
 
             var obj = (T)_listBox.Items[index];
 

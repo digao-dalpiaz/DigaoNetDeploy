@@ -35,6 +35,8 @@
             BtnDelete = new ToolStripButton();
             BtnUp = new ToolStripButton();
             BtnDown = new ToolStripButton();
+            BtnConnect = new ToolStripButton();
+            BtnDisconnect = new ToolStripButton();
             ToolBar.SuspendLayout();
             SuspendLayout();
             // 
@@ -48,18 +50,19 @@
             List.ItemHeight = 48;
             List.Location = new Point(0, 31);
             List.Name = "List";
-            List.Size = new Size(541, 420);
+            List.Size = new Size(755, 420);
             List.TabIndex = 1;
             List.DrawItem += List_DrawItem;
+            List.SelectedIndexChanged += List_SelectedIndexChanged;
             List.DoubleClick += List_DoubleClick;
             // 
             // ToolBar
             // 
             ToolBar.ImageScalingSize = new Size(24, 24);
-            ToolBar.Items.AddRange(new ToolStripItem[] { BtnAdd, BtnEdit, BtnDelete, BtnUp, BtnDown });
+            ToolBar.Items.AddRange(new ToolStripItem[] { BtnAdd, BtnEdit, BtnDelete, BtnUp, BtnDown, BtnConnect, BtnDisconnect });
             ToolBar.Location = new Point(0, 0);
             ToolBar.Name = "ToolBar";
-            ToolBar.Size = new Size(541, 31);
+            ToolBar.Size = new Size(755, 31);
             ToolBar.TabIndex = 0;
             // 
             // BtnAdd
@@ -107,6 +110,22 @@
             BtnDown.Text = "Move Down";
             BtnDown.Click += BtnDown_Click;
             // 
+            // BtnConnect
+            // 
+            BtnConnect.Image = Properties.Resources.connect;
+            BtnConnect.ImageTransparentColor = Color.Magenta;
+            BtnConnect.Name = "BtnConnect";
+            BtnConnect.Size = new Size(80, 28);
+            BtnConnect.Text = "Connect";
+            // 
+            // BtnDisconnect
+            // 
+            BtnDisconnect.Image = Properties.Resources.disconnect;
+            BtnDisconnect.ImageTransparentColor = Color.Magenta;
+            BtnDisconnect.Name = "BtnDisconnect";
+            BtnDisconnect.Size = new Size(94, 28);
+            BtnDisconnect.Text = "Disconnect";
+            // 
             // UCServers
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -114,7 +133,7 @@
             Controls.Add(List);
             Controls.Add(ToolBar);
             Name = "UCServers";
-            Size = new Size(541, 451);
+            Size = new Size(755, 451);
             Load += UCServers_Load;
             ToolBar.ResumeLayout(false);
             ToolBar.PerformLayout();
@@ -131,5 +150,7 @@
         private ToolStripButton BtnDelete;
         private ToolStripButton BtnUp;
         private ToolStripButton BtnDown;
+        private ToolStripButton BtnConnect;
+        private ToolStripButton BtnDisconnect;
     }
 }
