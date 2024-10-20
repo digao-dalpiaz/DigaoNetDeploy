@@ -83,14 +83,28 @@ namespace Manager
             }
         }
 
+        private void MoveStep(int flag)
+        {
+            var index = Steps.SelectedIndex;
+            if (index == -1) return;
+
+            var newIndex = index + flag;
+            if (newIndex < 0 || newIndex > Steps.Items.Count-1) return;
+
+            var step = Steps.Items[index];
+
+            Steps.Items.RemoveAt(index);
+            Steps.Items.Insert(newIndex, step);
+        }
+
         private void BtnUp_Click(object sender, EventArgs e)
         {
-
+            MoveStep(-1);
         }
 
         private void BtnDown_Click(object sender, EventArgs e)
         {
-
+            MoveStep(+1);
         }
 
         private void Steps_DrawItem(object sender, DrawItemEventArgs e)
