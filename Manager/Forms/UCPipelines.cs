@@ -23,11 +23,13 @@ namespace Manager
         private void UCPipelines_Load(object sender, EventArgs e)
         {
             _listEngine.Init();
+            UpdRunButton();
         }
 
         private void List_SelectedIndexChanged(object sender, EventArgs e)
         {
             _listEngine.UpdateButtons();
+            UpdRunButton();
         }
 
         private void BtnAdd_Click(object sender, EventArgs e)
@@ -68,6 +70,13 @@ namespace Manager
             _listEngine.MoveDown();
         }
 
+        private void UpdRunButton()
+        {
+            var pipeline = List.SelectedItem as Pipeline;
+
+            BtnRun.Enabled = pipeline != null;
+        }
+
         private void BtnRun_Click(object sender, EventArgs e)
         {
             if (Vars.PipelineRunning)
@@ -78,9 +87,22 @@ namespace Manager
 
             Vars.PipelineRunning = true;
 
+            var pipeline = List.SelectedItem as Pipeline;
+
+            LogService.Log($"Run pipeline '{pipeline.Name}'");
+
             Task.Run(() =>
             {
-                
+                try
+                {
+
+                }
+                catch (Exception ex)
+                {
+
+                }
+
+                Vars.PipelineRunning = false;
             });
         }
     }
