@@ -104,6 +104,7 @@
             BtnNew.TabIndex = 2;
             BtnNew.Text = "New";
             BtnNew.UseVisualStyleBackColor = true;
+            BtnNew.Click += BtnNew_Click;
             // 
             // BtnEdit
             // 
@@ -113,6 +114,7 @@
             BtnEdit.TabIndex = 3;
             BtnEdit.Text = "Edit";
             BtnEdit.UseVisualStyleBackColor = true;
+            BtnEdit.Click += BtnEdit_Click;
             // 
             // BtnRemove
             // 
@@ -122,6 +124,7 @@
             BtnRemove.TabIndex = 4;
             BtnRemove.Text = "Remove";
             BtnRemove.UseVisualStyleBackColor = true;
+            BtnRemove.Click += BtnRemove_Click;
             // 
             // BtnUp
             // 
@@ -131,6 +134,7 @@
             BtnUp.TabIndex = 5;
             BtnUp.Text = "Move Up";
             BtnUp.UseVisualStyleBackColor = true;
+            BtnUp.Click += BtnUp_Click;
             // 
             // BtnDown
             // 
@@ -140,6 +144,7 @@
             BtnDown.TabIndex = 6;
             BtnDown.Text = "Move Down";
             BtnDown.UseVisualStyleBackColor = true;
+            BtnDown.Click += BtnDown_Click;
             // 
             // FrmPipeline
             // 

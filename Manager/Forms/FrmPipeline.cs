@@ -45,5 +45,30 @@ namespace Manager
 
             DialogResult = DialogResult.OK;
         }
+
+        private void BtnNew_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BtnEdit_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BtnRemove_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BtnUp_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BtnDown_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
