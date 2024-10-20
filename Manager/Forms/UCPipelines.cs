@@ -74,7 +74,7 @@ namespace Manager
         {
             var pipeline = List.SelectedItem as Pipeline;
 
-            BtnRun.Enabled = pipeline != null;
+            BtnRun.Enabled = pipeline != null && !Vars.PipelineRunning;
         }
 
         private void BtnRun_Click(object sender, EventArgs e)
@@ -86,6 +86,7 @@ namespace Manager
             }
 
             Vars.PipelineRunning = true;
+            UpdRunButton();
 
             var pipeline = List.SelectedItem as Pipeline;
 
@@ -101,8 +102,12 @@ namespace Manager
                 {
 
                 }
-
-                Vars.PipelineRunning = false;
+                
+                Invoke(() =>
+                {
+                    Vars.PipelineRunning = false;
+                    UpdRunButton();
+                });
             });
         }
     }
