@@ -28,12 +28,34 @@
         /// </summary>
         private void InitializeComponent()
         {
+            BoxTop = new Panel();
+            BoxUC = new Panel();
             ToolBar = new ToolStrip();
             BtnServers = new ToolStripButton();
             BtnPipelines = new ToolStripButton();
-            BoxUC = new Panel();
+            SplitterBar = new Splitter();
+            EdLog = new RichTextBox();
+            BoxTop.SuspendLayout();
             ToolBar.SuspendLayout();
             SuspendLayout();
+            // 
+            // BoxTop
+            // 
+            BoxTop.Controls.Add(BoxUC);
+            BoxTop.Controls.Add(ToolBar);
+            BoxTop.Dock = DockStyle.Fill;
+            BoxTop.Location = new Point(0, 0);
+            BoxTop.Name = "BoxTop";
+            BoxTop.Size = new Size(700, 304);
+            BoxTop.TabIndex = 3;
+            // 
+            // BoxUC
+            // 
+            BoxUC.Dock = DockStyle.Fill;
+            BoxUC.Location = new Point(107, 0);
+            BoxUC.Name = "BoxUC";
+            BoxUC.Size = new Size(593, 304);
+            BoxUC.TabIndex = 2;
             // 
             // ToolBar
             // 
@@ -42,15 +64,15 @@
             ToolBar.Items.AddRange(new ToolStripItem[] { BtnServers, BtnPipelines });
             ToolBar.Location = new Point(0, 0);
             ToolBar.Name = "ToolBar";
-            ToolBar.Size = new Size(107, 473);
-            ToolBar.TabIndex = 0;
+            ToolBar.Size = new Size(107, 304);
+            ToolBar.TabIndex = 1;
             // 
             // BtnServers
             // 
             BtnServers.Image = Properties.Resources.server_orange;
             BtnServers.ImageTransparentColor = Color.Magenta;
             BtnServers.Name = "BtnServers";
-            BtnServers.Size = new Size(94, 52);
+            BtnServers.Size = new Size(104, 52);
             BtnServers.Text = "Servers";
             BtnServers.Click += BtnServers_Click;
             // 
@@ -59,41 +81,59 @@
             BtnPipelines.Image = Properties.Resources.pipeline_orange;
             BtnPipelines.ImageTransparentColor = Color.Magenta;
             BtnPipelines.Name = "BtnPipelines";
-            BtnPipelines.Size = new Size(94, 52);
+            BtnPipelines.Size = new Size(104, 52);
             BtnPipelines.Text = "Pipelines";
             BtnPipelines.Click += BtnPipelines_Click;
             // 
-            // BoxUC
+            // SplitterBar
             // 
-            BoxUC.Dock = DockStyle.Fill;
-            BoxUC.Location = new Point(107, 0);
-            BoxUC.Name = "BoxUC";
-            BoxUC.Size = new Size(593, 473);
-            BoxUC.TabIndex = 1;
+            SplitterBar.Dock = DockStyle.Bottom;
+            SplitterBar.Location = new Point(0, 304);
+            SplitterBar.Name = "SplitterBar";
+            SplitterBar.Size = new Size(700, 5);
+            SplitterBar.TabIndex = 4;
+            SplitterBar.TabStop = false;
+            // 
+            // EdLog
+            // 
+            EdLog.BackColor = Color.RosyBrown;
+            EdLog.BorderStyle = BorderStyle.None;
+            EdLog.Dock = DockStyle.Bottom;
+            EdLog.Font = new Font("Consolas", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            EdLog.Location = new Point(0, 309);
+            EdLog.Name = "EdLog";
+            EdLog.ReadOnly = true;
+            EdLog.Size = new Size(700, 164);
+            EdLog.TabIndex = 5;
+            EdLog.Text = "";
             // 
             // FrmMain
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(700, 473);
-            Controls.Add(BoxUC);
-            Controls.Add(ToolBar);
+            Controls.Add(BoxTop);
+            Controls.Add(SplitterBar);
+            Controls.Add(EdLog);
             Margin = new Padding(3, 2, 3, 2);
             Name = "FrmMain";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Digao Net Deploy";
             Load += FrmMain_Load;
+            BoxTop.ResumeLayout(false);
+            BoxTop.PerformLayout();
             ToolBar.ResumeLayout(false);
             ToolBar.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
-
+        private Panel BoxTop;
+        private Panel BoxUC;
         private ToolStrip ToolBar;
         private ToolStripButton BtnServers;
         private ToolStripButton BtnPipelines;
-        private Panel BoxUC;
+        private Splitter SplitterBar;
+        private RichTextBox EdLog;
     }
 }
