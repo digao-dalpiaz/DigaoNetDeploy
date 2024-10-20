@@ -1,13 +1,13 @@
 ﻿namespace Manager
 {
-    partial class FrmServers
+    partial class UCServers
     {
-        /// <summary>
+        /// <summary> 
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
+        /// <summary> 
         /// Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
@@ -20,10 +20,10 @@
             base.Dispose(disposing);
         }
 
-        #region Windows Form Designer generated code
+        #region Component Designer generated code
 
-        /// <summary>
-        /// Required method for Designer support - do not modify
+        /// <summary> 
+        /// Required method for Designer support - do not modify 
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
@@ -39,13 +39,15 @@
             // List
             // 
             List.Dock = DockStyle.Fill;
+            List.DrawMode = DrawMode.OwnerDrawFixed;
             List.FormattingEnabled = true;
             List.IntegralHeight = false;
-            List.ItemHeight = 15;
+            List.ItemHeight = 48;
             List.Location = new Point(0, 31);
             List.Name = "List";
-            List.Size = new Size(516, 406);
-            List.TabIndex = 0;
+            List.Size = new Size(541, 420);
+            List.TabIndex = 2;
+            List.DrawItem += List_DrawItem;
             // 
             // ToolBar
             // 
@@ -53,8 +55,8 @@
             ToolBar.Items.AddRange(new ToolStripItem[] { BtnAdd, BtnEdit, BtnDelete });
             ToolBar.Location = new Point(0, 0);
             ToolBar.Name = "ToolBar";
-            ToolBar.Size = new Size(516, 31);
-            ToolBar.TabIndex = 1;
+            ToolBar.Size = new Size(541, 31);
+            ToolBar.TabIndex = 3;
             ToolBar.Text = "toolStrip1";
             // 
             // BtnAdd
@@ -84,20 +86,15 @@
             BtnDelete.Text = "Remove";
             BtnDelete.Click += BtnDelete_Click;
             // 
-            // FrmServers
+            // UCServers
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(516, 437);
             Controls.Add(List);
             Controls.Add(ToolBar);
-            Margin = new Padding(3, 2, 3, 2);
-            MinimizeBox = false;
-            Name = "FrmServers";
-            ShowInTaskbar = false;
-            StartPosition = FormStartPosition.CenterScreen;
-            Text = "Servers";
-            Load += FrmServers_Load;
+            Name = "UCServers";
+            Size = new Size(541, 451);
+            Load += UCServers_Load;
             ToolBar.ResumeLayout(false);
             ToolBar.PerformLayout();
             ResumeLayout(false);
