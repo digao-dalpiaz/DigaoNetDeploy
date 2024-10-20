@@ -23,41 +23,34 @@ namespace Manager.Utility
             LogService.Log("Local Folder: " + from);
             LogService.Log("Remote Folder: " + to);
 
-            var keyFile = new PrivateKeyFile(_params.Server.KeyFile);
-            
-            using (var sftp = new SftpClient(_params.Server.Host, _params.Server.Port, _params.Server.User, keyFile))
+            var sftp = _params.GetSftp();
+
+            if (sftp.Exists(to))
             {
-                sftp.Connect();
-
-                if (sftp.Exists(to))
+                var remoteFiles = sftp.ListDirectory(to).Where(x => x.Name != "." && x.Name != "..").ToList();
+                if (remoteFiles.Count > 0) LogService.Log("Files to delete: " + remoteFiles.Count);
+                foreach (var file in remoteFiles)
                 {
-                    var remoteFiles = sftp.ListDirectory(to).Where(x => x.Name != "." && x.Name != "..").ToList();
-                    if (remoteFiles.Count > 0) LogService.Log("Files to delete: " + remoteFiles.Count);
-                    foreach (var file in remoteFiles)
-                    {
-                        LogService.Log($"Deleting existing file '{file.FullName}'...");
-                        sftp.DeleteFile(file.FullName);
-                    }
+                    LogService.Log($"Deleting existing file '{file.FullName}'...");
+                    sftp.DeleteFile(file.FullName);
                 }
-                else
+            }
+            else
+            {
+                sftp.CreateDirectory(to);
+            }
+
+            var localFiles = Directory.GetFiles(from);
+            LogService.Log("Files to upload: " + localFiles.Length);
+            foreach (var file in localFiles)
+            {
+                using (var fileStream = new FileStream(file, FileMode.Open, FileAccess.Read))
                 {
-                    sftp.CreateDirectory(to);
+                    string remoteFileName = to + "/" + Path.GetFileName(file);
+
+                    LogService.Log($"Send file from '{file}' to '{remoteFileName}'");
+                    sftp.UploadFile(fileStream, remoteFileName);
                 }
-
-                var localFiles = Directory.GetFiles(from);
-                LogService.Log("Files to upload: " + localFiles.Length);
-                foreach (var file in localFiles)
-                {
-                    using (var fileStream = new FileStream(file, FileMode.Open, FileAccess.Read))
-                    {
-                        string remoteFileName = to + "/" + Path.GetFileName(file);
-
-                        LogService.Log($"Send file from '{file}' to '{remoteFileName}'");
-                        sftp.UploadFile(fileStream, remoteFileName);
-                    }
-                }
-
-                sftp.Disconnect();
             }
         }
 

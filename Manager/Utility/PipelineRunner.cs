@@ -10,6 +10,7 @@ namespace Manager.Utility
 
         private Server _server;
         private SshClient _ssh;
+        private SftpClient _sftp;
 
         public void Run()
         {
@@ -32,6 +33,12 @@ namespace Manager.Utility
             }
             finally
             {
+                if (_sftp != null && _sftp.IsConnected)
+                {
+                    LogService.Log("Disconnecting from sftp...");
+                    _sftp.Disconnect();
+                }
+
                 LogService.Log("Disconnecting from server...");
                 _ssh.Disconnect();
             }
@@ -80,6 +87,7 @@ namespace Manager.Utility
                 var parameters = new OperationParams();
                 parameters.Arguments = args;
                 parameters.Server = _server;
+                parameters.GetSftp = GetSftp;
 
                 opDef.Action(parameters);
             }
@@ -106,6 +114,20 @@ namespace Manager.Utility
             }
 
             return args;
+        }
+
+        private SftpClient GetSftp()
+        {
+            if (_sftp == null)
+            {
+                var keyFile = new PrivateKeyFile(_server.KeyFile);
+
+                _sftp = new SftpClient(_server.Host, _server.Port, _server.User, keyFile);
+                LogService.Log("Connecting to SFTP service...");
+                _sftp.Connect();
+                LogService.Log("Connected!");
+            }
+            return _sftp;
         }
 
     }

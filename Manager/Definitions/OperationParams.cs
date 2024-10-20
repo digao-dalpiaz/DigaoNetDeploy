@@ -1,4 +1,5 @@
 ﻿using Manager.Storage;
+using Renci.SshNet;
 
 namespace Manager.Definitions
 {
@@ -6,5 +7,6 @@ namespace Manager.Definitions
     {
         public ArgumentsDictionary Arguments;
         public Server Server;
+        public Func<SftpClient> GetSftp;
     }
 }
