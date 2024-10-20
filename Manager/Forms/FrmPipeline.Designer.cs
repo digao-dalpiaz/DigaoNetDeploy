@@ -32,7 +32,7 @@
             BtnOK = new Button();
             EdName = new TextBox();
             label1 = new Label();
-            listBox1 = new ListBox();
+            Steps = new ListBox();
             label2 = new Label();
             BtnNew = new Button();
             BtnEdit = new Button();
@@ -77,15 +77,15 @@
             label1.TabIndex = 10;
             label1.Text = "Name";
             // 
-            // listBox1
+            // Steps
             // 
-            listBox1.FormattingEnabled = true;
-            listBox1.IntegralHeight = false;
-            listBox1.ItemHeight = 15;
-            listBox1.Location = new Point(16, 96);
-            listBox1.Name = "listBox1";
-            listBox1.Size = new Size(464, 296);
-            listBox1.TabIndex = 1;
+            Steps.FormattingEnabled = true;
+            Steps.IntegralHeight = false;
+            Steps.ItemHeight = 15;
+            Steps.Location = new Point(16, 96);
+            Steps.Name = "Steps";
+            Steps.Size = new Size(464, 296);
+            Steps.TabIndex = 1;
             // 
             // label2
             // 
@@ -154,7 +154,7 @@
             Controls.Add(BtnEdit);
             Controls.Add(BtnNew);
             Controls.Add(label2);
-            Controls.Add(listBox1);
+            Controls.Add(Steps);
             Controls.Add(BtnCancel);
             Controls.Add(BtnOK);
             Controls.Add(EdName);
@@ -177,7 +177,7 @@
         private Button BtnOK;
         private TextBox EdName;
         private Label label1;
-        private ListBox listBox1;
+        private ListBox Steps;
         private Label label2;
         private Button BtnNew;
         private Button BtnEdit;

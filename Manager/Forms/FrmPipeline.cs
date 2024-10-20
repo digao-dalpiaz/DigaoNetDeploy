@@ -27,6 +27,12 @@ namespace Manager
         {
             if (!Messages.ValidateField(EdName, "Name")) return;
 
+            if (Steps.Items.Count == 0)
+            {
+                Messages.Error("There are no steps in the pipeline");
+                return;
+            }
+
             //
 
             if (ReturningObj == null)
@@ -35,6 +41,7 @@ namespace Manager
             }
 
             ReturningObj.Name = EdName.Text;
+            //ReturningObj.Steps....
 
             DialogResult = DialogResult.OK;
         }
