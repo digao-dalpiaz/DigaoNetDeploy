@@ -74,12 +74,20 @@ namespace Manager
 
         private void UpdConnectionButtons()
         {
+            var server = List.SelectedItem as Server;
+
+            BtnConnect.Enabled = server?.Status == ServerStatus.DISCONNECTED;
+            BtnDisconnect.Enabled = server?.Status == ServerStatus.CONNECTED;
+        }
+
+        private void ChangeConnectionStatus(Server server, ServerStatus status)
+        {
             Invoke(() =>
             {
-                var server = List.SelectedItem as Server;
+                server.Status = status;
 
-                BtnConnect.Enabled = server?.Status == ServerStatus.DISCONNECTED;
-                BtnDisconnect.Enabled = server?.Status == ServerStatus.CONNECTED;
+                UpdConnectionButtons();
+                List.Invalidate();
             });
         }
 
@@ -87,8 +95,7 @@ namespace Manager
         {
             var server = List.SelectedItem as Server;
 
-            server.Status = ServerStatus.CONNECTING;
-            UpdConnectionButtons();
+            ChangeConnectionStatus(server, ServerStatus.CONNECTING);
 
             server.Tunnel = new SshClient(server.Host, server.Port, server.User, server.Password);
             server.Tunnel.ErrorOccurred += Tunnel_ErrorOccurred;
@@ -101,17 +108,15 @@ namespace Manager
                 try
                 {
                     server.Tunnel.Connect();
-                    server.Status = ServerStatus.CONNECTED;
+                    ChangeConnectionStatus(server, ServerStatus.CONNECTED);
 
                     LogServer(server, "Connected successfully!", Color.Lime);
                 }
                 catch (Exception ex)
                 {
-                    server.Status = ServerStatus.DISCONNECTED;
+                    ChangeConnectionStatus(server, ServerStatus.DISCONNECTED);
                     LogServer(server, "ERROR ON CONNECTING: " + ex.Message, Color.Crimson);
                 }
-
-                UpdConnectionButtons();
             });
         }
 
@@ -153,8 +158,7 @@ namespace Manager
         private void SetDisconnected(Server server)
         {
             LogServer(server, "Disconnected.");
-            server.Status = ServerStatus.DISCONNECTED;
-            UpdConnectionButtons();
+            ChangeConnectionStatus(server, ServerStatus.DISCONNECTED);
         }
     }
 }
