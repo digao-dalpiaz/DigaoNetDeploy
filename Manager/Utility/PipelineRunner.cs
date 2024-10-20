@@ -18,14 +18,8 @@ namespace Manager.Utility
             CreateSSH();
 
             LogService.Log($"Connecting to server '{_server.Name}'...");
-            try
-            {
-                _ssh.Connect();
-            }
-            catch (Exception ex)
-            {
-                throw new Exception($"Error connecting to server: " + ex.Message);
-            }
+            _ssh.Connect();
+            LogService.Log("Connected!");
 
             try
             {
