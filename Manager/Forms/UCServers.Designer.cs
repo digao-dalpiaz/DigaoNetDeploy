@@ -117,6 +117,7 @@
             BtnConnect.Name = "BtnConnect";
             BtnConnect.Size = new Size(80, 28);
             BtnConnect.Text = "Connect";
+            BtnConnect.Click += BtnConnect_Click;
             // 
             // BtnDisconnect
             // 
@@ -125,6 +126,7 @@
             BtnDisconnect.Name = "BtnDisconnect";
             BtnDisconnect.Size = new Size(94, 28);
             BtnDisconnect.Text = "Disconnect";
+            BtnDisconnect.Click += BtnDisconnect_Click;
             // 
             // UCServers
             // 

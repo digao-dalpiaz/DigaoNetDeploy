@@ -77,6 +77,22 @@ namespace Manager
             BtnConnect.Enabled = server?.Status == ServerStatus.DISCONNECTED;
             BtnDisconnect.Enabled = server?.Status == ServerStatus.CONNECTED;
         }
-        
+
+        private void BtnConnect_Click(object sender, EventArgs e)
+        {
+            var server = List.SelectedItem as Server;
+
+            server.Status = ServerStatus.CONNECTING;
+            UpdConnectionButtons();
+
+
+        }
+
+        private void BtnDisconnect_Click(object sender, EventArgs e)
+        {
+            var server = List.SelectedItem as Server;
+
+            UpdConnectionButtons();
+        }
     }
 }
