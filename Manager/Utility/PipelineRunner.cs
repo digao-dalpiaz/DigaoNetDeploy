@@ -14,30 +14,37 @@ namespace Manager.Utility
 
         public void Run()
         {
-            FindServer();
-            CreateSSH();
-
-            LogService.Log($"Connecting to server '{_server.Name}'...");
-            _ssh.Connect();
-            LogService.Log("Connected!");
-
+            bool success = false;
             try
             {
-                ExecuteSteps();
-            }
-            finally
-            {
-                if (_sftp != null && _sftp.IsConnected)
-                {
-                    LogService.Log("Disconnecting from sftp...");
-                    _sftp.Disconnect();
-                }
+                FindServer();
+                CreateSSH();
 
+                LogService.Log($"Connecting to server '{_server.Name}'...");
+                _ssh.Connect();
+                LogService.Log("Connected!");
+
+                ExecuteSteps();
+                success = true;
+            }
+            catch (Exception ex)
+            {
+                LogService.Log("ERROR: " + ex.Message, Color.Crimson);
+            }
+
+            if (_sftp != null && _sftp.IsConnected)
+            {
+                LogService.Log("Disconnecting from sftp...");
+                _sftp.Disconnect();
+            }
+
+            if (_ssh != null && _ssh.IsConnected)
+            {
                 LogService.Log("Disconnecting from server...");
                 _ssh.Disconnect();
             }
 
-            LogService.Log("Pipeline finished!", Color.Lime);
+            if (success) LogService.Log("Pipeline finished!", Color.Lime);
         }
 
         private void FindServer()
