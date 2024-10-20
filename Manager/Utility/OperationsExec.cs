@@ -11,6 +11,12 @@ namespace Manager.Utility
             {
                 throw new Exception($"Argument '{key}' not found");
             }
+
+            if (string.IsNullOrEmpty(value))
+            {
+                throw new Exception($"Argument '{key}' is empty");
+            }
+
             return value;
         }
 

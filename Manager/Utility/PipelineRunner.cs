@@ -113,8 +113,8 @@ namespace Manager.Utility
                 int i = line.IndexOf('=');
                 if (i == -1) continue;
 
-                string key = line[..i];
-                string value = line[(i + 1)..];
+                string key = line[..i].Trim();
+                string value = line[(i + 1)..].Trim();
 
                 if (args.ContainsKey(key)) throw new Exception($"Duplicated key '{key}'");
 
