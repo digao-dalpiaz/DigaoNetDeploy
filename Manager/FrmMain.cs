@@ -1,4 +1,5 @@
 using System.Reflection;
+using Manager.Storage;
 using Manager.Theme;
 
 namespace Manager

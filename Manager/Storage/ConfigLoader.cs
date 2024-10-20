@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace Manager
+namespace Manager.Storage
 {
     internal class ConfigLoader
     {
@@ -13,7 +13,7 @@ namespace Manager
         public static void Load()
         {
             string file = GetFile();
-            if (File.Exists(file)) 
+            if (File.Exists(file))
             {
                 var contents = File.ReadAllText(file);
                 Vars.Config = JsonConvert.DeserializeObject<Config>(contents);
@@ -26,8 +26,8 @@ namespace Manager
             }
         }
 
-        public static void Save() 
-        { 
+        public static void Save()
+        {
             File.WriteAllText(GetFile(), JsonConvert.SerializeObject(Vars.Config));
         }
 

@@ -1,4 +1,6 @@
-﻿namespace Manager
+﻿using Manager.Storage;
+
+namespace Manager
 {
     internal class Vars
     {

@@ -1,4 +1,4 @@
-﻿namespace Manager
+﻿namespace Manager.Storage
 {
     internal class Config
     {
