@@ -27,7 +27,7 @@ namespace Manager.Utility
 
             if (sftp.Exists(to))
             {
-                var remoteFiles = sftp.ListDirectory(to).Where(x => x.Name != "." && x.Name != "..").ToList();
+                var remoteFiles = sftp.ListDirectory(to).Where(x => x.IsRegularFile).ToList();
                 if (remoteFiles.Count > 0) LogService.Log("Files to delete: " + remoteFiles.Count);
                 foreach (var file in remoteFiles)
                 {
