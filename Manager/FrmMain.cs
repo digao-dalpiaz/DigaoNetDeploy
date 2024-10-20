@@ -7,7 +7,7 @@ namespace Manager
     public partial class FrmMain : Form
     {
 
-        private UCServers _ucServers;
+        private readonly UCServers _ucServers;
 
         public FrmMain()
         {
