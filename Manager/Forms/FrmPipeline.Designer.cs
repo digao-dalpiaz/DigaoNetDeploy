@@ -32,24 +32,29 @@
             BtnOK = new Button();
             EdName = new TextBox();
             label1 = new Label();
+            listBox1 = new ListBox();
+            label2 = new Label();
+            BtnNew = new Button();
+            BtnEdit = new Button();
+            BtnRemove = new Button();
             SuspendLayout();
             // 
             // BtnCancel
             // 
             BtnCancel.DialogResult = DialogResult.Cancel;
-            BtnCancel.Location = new Point(328, 296);
+            BtnCancel.Location = new Point(320, 408);
             BtnCancel.Name = "BtnCancel";
             BtnCancel.Size = new Size(104, 32);
-            BtnCancel.TabIndex = 12;
+            BtnCancel.TabIndex = 6;
             BtnCancel.Text = "Cancel";
             BtnCancel.UseVisualStyleBackColor = true;
             // 
             // BtnOK
             // 
-            BtnOK.Location = new Point(224, 296);
+            BtnOK.Location = new Point(216, 408);
             BtnOK.Name = "BtnOK";
             BtnOK.Size = new Size(96, 32);
-            BtnOK.TabIndex = 11;
+            BtnOK.TabIndex = 5;
             BtnOK.Text = "OK";
             BtnOK.UseVisualStyleBackColor = true;
             BtnOK.Click += BtnOK_Click;
@@ -58,8 +63,8 @@
             // 
             EdName.Location = new Point(16, 32);
             EdName.Name = "EdName";
-            EdName.Size = new Size(400, 23);
-            EdName.TabIndex = 9;
+            EdName.Size = new Size(600, 23);
+            EdName.TabIndex = 0;
             // 
             // label1
             // 
@@ -70,13 +75,64 @@
             label1.TabIndex = 10;
             label1.Text = "Name";
             // 
+            // listBox1
+            // 
+            listBox1.FormattingEnabled = true;
+            listBox1.IntegralHeight = false;
+            listBox1.ItemHeight = 15;
+            listBox1.Location = new Point(16, 96);
+            listBox1.Name = "listBox1";
+            listBox1.Size = new Size(464, 296);
+            listBox1.TabIndex = 1;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(14, 78);
+            label2.Name = "label2";
+            label2.Size = new Size(35, 15);
+            label2.TabIndex = 14;
+            label2.Text = "Steps";
+            // 
+            // BtnNew
+            // 
+            BtnNew.Location = new Point(488, 96);
+            BtnNew.Name = "BtnNew";
+            BtnNew.Size = new Size(128, 32);
+            BtnNew.TabIndex = 2;
+            BtnNew.Text = "New";
+            BtnNew.UseVisualStyleBackColor = true;
+            // 
+            // BtnEdit
+            // 
+            BtnEdit.Location = new Point(488, 136);
+            BtnEdit.Name = "BtnEdit";
+            BtnEdit.Size = new Size(128, 32);
+            BtnEdit.TabIndex = 3;
+            BtnEdit.Text = "Edit";
+            BtnEdit.UseVisualStyleBackColor = true;
+            // 
+            // BtnRemove
+            // 
+            BtnRemove.Location = new Point(488, 176);
+            BtnRemove.Name = "BtnRemove";
+            BtnRemove.Size = new Size(128, 32);
+            BtnRemove.TabIndex = 4;
+            BtnRemove.Text = "Remove";
+            BtnRemove.UseVisualStyleBackColor = true;
+            // 
             // FrmPipeline
             // 
             AcceptButton = BtnOK;
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             CancelButton = BtnCancel;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(633, 450);
+            Controls.Add(BtnRemove);
+            Controls.Add(BtnEdit);
+            Controls.Add(BtnNew);
+            Controls.Add(label2);
+            Controls.Add(listBox1);
             Controls.Add(BtnCancel);
             Controls.Add(BtnOK);
             Controls.Add(EdName);
@@ -99,5 +155,10 @@
         private Button BtnOK;
         private TextBox EdName;
         private Label label1;
+        private ListBox listBox1;
+        private Label label2;
+        private Button BtnNew;
+        private Button BtnEdit;
+        private Button BtnRemove;
     }
 }
