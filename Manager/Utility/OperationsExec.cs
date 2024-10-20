@@ -29,7 +29,11 @@ namespace Manager.Utility
             {
                 sftp.Connect();
 
-                if (sftp.Exists(to)) sftp.DeleteDirectory(to);
+                if (sftp.Exists(to))
+                {
+                    LogService.Log($"Deleting existing directory '{to}'...");
+                    sftp.DeleteDirectory(to);
+                }
                 sftp.CreateDirectory(to);
 
                 var localFiles = Directory.GetFiles(from);
