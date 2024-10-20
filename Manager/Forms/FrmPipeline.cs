@@ -15,6 +15,16 @@ namespace Manager
         public FrmPipeline()
         {
             InitializeComponent();
+
+            BuildServers();
+        }
+
+        private void BuildServers()
+        {
+            foreach (var server in Vars.Config.Servers)
+            {
+                EdServer.Items.Add(server);
+            }
         }
 
         private void FrmPipeline_Load(object sender, EventArgs e)
@@ -25,12 +35,23 @@ namespace Manager
 
                 EdName.Text = ReturningObj.Name;
                 ReturningObj.Steps.ForEach(x => Steps.Items.Add(x));
+
+                var server = Vars.Config.Servers.Find(x => x.Id == ReturningObj.ServerId);
+                if (server != null) EdServer.SelectedItem = server;
             }
         }
 
         private void BtnOK_Click(object sender, EventArgs e)
         {
             if (!Messages.ValidateField(EdName, "Name")) return;
+
+            var server = EdServer.SelectedItem as Server;
+            if (server == null)
+            {
+                Messages.Error("Select a server");
+                EdServer.Focus();
+                return;
+            }
 
             if (Steps.Items.Count == 0)
             {
@@ -46,6 +67,7 @@ namespace Manager
             }
 
             ReturningObj.Name = EdName.Text;
+            ReturningObj.ServerId = server.Id;
             ReturningObj.Steps = Steps.Items.Cast<Step>().ToList();
 
             DialogResult = DialogResult.OK;

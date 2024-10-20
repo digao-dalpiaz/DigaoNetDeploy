@@ -28,6 +28,11 @@ namespace Manager.Storage
         public string Password;
         public string KeyFile;
 
+        public override string ToString()
+        {
+            return Name;
+        }
+
         [JsonIgnore]
         public ServerStatus Status = ServerStatus.DISCONNECTED;
 
@@ -37,6 +42,7 @@ namespace Manager.Storage
 
     public class Pipeline : NamedClass
     {
+        public Guid ServerId;
         public List<Step> Steps;
     }
 
