@@ -72,8 +72,10 @@
             // 
             // FrmPipeline
             // 
+            AcceptButton = BtnOK;
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            CancelButton = BtnCancel;
             ClientSize = new Size(800, 450);
             Controls.Add(BtnCancel);
             Controls.Add(BtnOK);
