@@ -96,7 +96,7 @@
             // 
             // EdLog
             // 
-            EdLog.BackColor = Color.RosyBrown;
+            EdLog.BackColor = Color.FromArgb(45, 40, 65);
             EdLog.BorderStyle = BorderStyle.None;
             EdLog.Dock = DockStyle.Bottom;
             EdLog.Font = new Font("Consolas", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);

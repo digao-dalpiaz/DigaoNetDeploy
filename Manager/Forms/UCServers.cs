@@ -1,6 +1,8 @@
 ﻿using Manager.Storage;
 using Manager.Theme;
 using Manager.Utility;
+using Renci.SshNet;
+using Renci.SshNet.Common;
 
 namespace Manager
 {
@@ -85,12 +87,46 @@ namespace Manager
             server.Status = ServerStatus.CONNECTING;
             UpdConnectionButtons();
 
+            server.Tunnel = new SshClient(server.Host, server.Port, server.User, server.Password);
+            server.Tunnel.ErrorOccurred += Tunnel_ErrorOccurred;
+            server.Tunnel.ServerIdentificationReceived += Tunnel_ServerIdentificationReceived;
 
+            LogService.Log($"Connecting to server {server.Name}...");
+
+            Task.Run(() =>
+            {
+                try
+                {
+                    server.Tunnel.Connect();
+                    server.Status = ServerStatus.CONNECTED;
+
+                    LogService.Log("Connected successfully!", Color.Lime);
+                }
+                catch (Exception ex)
+                {
+                    server.Status = ServerStatus.DISCONNECTED;
+                    LogService.Log("ERROR ON CONNECTING: " + ex.Message, Color.Crimson);
+                }
+            });
+        }
+
+        private void Tunnel_ServerIdentificationReceived(object sender, SshIdentificationEventArgs e)
+        {
+            LogService.Log("IDENT: " + e.SshIdentification.ToString());
+        }
+
+        private void Tunnel_ErrorOccurred(object sender, ExceptionEventArgs e)
+        {
+            LogService.Log("ERROR: " + e.Exception.Message, Color.Crimson);
         }
 
         private void BtnDisconnect_Click(object sender, EventArgs e)
         {
             var server = List.SelectedItem as Server;
+
+            LogService.Log($"Disconnect server {server.Name}");
+            server.Tunnel.Disconnect();
+            LogService.Log($"Disconnected server {server.Name}");
 
             UpdConnectionButtons();
         }

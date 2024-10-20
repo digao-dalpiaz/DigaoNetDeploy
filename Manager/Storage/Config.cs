@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Renci.SshNet;
 
 namespace Manager.Storage
 {
@@ -29,6 +30,9 @@ namespace Manager.Storage
 
         [JsonIgnore]
         public ServerStatus Status = ServerStatus.DISCONNECTED;
+
+        [JsonIgnore]
+        public SshClient Tunnel;
     }
 
     public class Pipeline : NamedClass

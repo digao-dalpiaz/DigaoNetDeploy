@@ -1,5 +1,6 @@
 using Manager.Storage;
 using Manager.Theme;
+using Manager.Utility;
 using System.Reflection;
 
 namespace Manager
@@ -14,6 +15,8 @@ namespace Manager
             InitializeComponent();
 
             this.Icon = Icon.ExtractAssociatedIcon(Assembly.GetExecutingAssembly().Location);
+
+            LogService.LogControl = this.EdLog;
 
             DarkTitle.UseImmersiveDarkMode(this.Handle);
 
