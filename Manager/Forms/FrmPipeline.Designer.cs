@@ -44,7 +44,7 @@
             // BtnCancel
             // 
             BtnCancel.DialogResult = DialogResult.Cancel;
-            BtnCancel.Location = new Point(320, 408);
+            BtnCancel.Location = new Point(320, 416);
             BtnCancel.Name = "BtnCancel";
             BtnCancel.Size = new Size(104, 32);
             BtnCancel.TabIndex = 8;
@@ -53,7 +53,7 @@
             // 
             // BtnOK
             // 
-            BtnOK.Location = new Point(216, 408);
+            BtnOK.Location = new Point(216, 416);
             BtnOK.Name = "BtnOK";
             BtnOK.Size = new Size(96, 32);
             BtnOK.TabIndex = 7;
@@ -83,7 +83,7 @@
             Steps.FormattingEnabled = true;
             Steps.IntegralHeight = false;
             Steps.ItemHeight = 48;
-            Steps.Location = new Point(16, 96);
+            Steps.Location = new Point(16, 88);
             Steps.Name = "Steps";
             Steps.Size = new Size(464, 296);
             Steps.TabIndex = 1;
@@ -93,7 +93,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(14, 78);
+            label2.Location = new Point(14, 70);
             label2.Name = "label2";
             label2.Size = new Size(35, 15);
             label2.TabIndex = 14;
@@ -101,7 +101,7 @@
             // 
             // BtnNew
             // 
-            BtnNew.Location = new Point(488, 96);
+            BtnNew.Location = new Point(488, 88);
             BtnNew.Name = "BtnNew";
             BtnNew.Size = new Size(128, 32);
             BtnNew.TabIndex = 2;
@@ -111,7 +111,7 @@
             // 
             // BtnEdit
             // 
-            BtnEdit.Location = new Point(488, 136);
+            BtnEdit.Location = new Point(488, 128);
             BtnEdit.Name = "BtnEdit";
             BtnEdit.Size = new Size(128, 32);
             BtnEdit.TabIndex = 3;
@@ -121,7 +121,7 @@
             // 
             // BtnRemove
             // 
-            BtnRemove.Location = new Point(488, 176);
+            BtnRemove.Location = new Point(488, 168);
             BtnRemove.Name = "BtnRemove";
             BtnRemove.Size = new Size(128, 32);
             BtnRemove.TabIndex = 4;
@@ -131,7 +131,7 @@
             // 
             // BtnUp
             // 
-            BtnUp.Location = new Point(488, 240);
+            BtnUp.Location = new Point(488, 232);
             BtnUp.Name = "BtnUp";
             BtnUp.Size = new Size(128, 32);
             BtnUp.TabIndex = 5;
@@ -141,7 +141,7 @@
             // 
             // BtnDown
             // 
-            BtnDown.Location = new Point(488, 280);
+            BtnDown.Location = new Point(488, 272);
             BtnDown.Name = "BtnDown";
             BtnDown.Size = new Size(128, 32);
             BtnDown.TabIndex = 6;
@@ -155,18 +155,18 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             CancelButton = BtnCancel;
-            ClientSize = new Size(633, 450);
-            Controls.Add(BtnDown);
-            Controls.Add(BtnUp);
-            Controls.Add(BtnRemove);
-            Controls.Add(BtnEdit);
-            Controls.Add(BtnNew);
-            Controls.Add(label2);
+            ClientSize = new Size(633, 458);
             Controls.Add(Steps);
+            Controls.Add(BtnDown);
             Controls.Add(BtnCancel);
+            Controls.Add(label2);
+            Controls.Add(BtnUp);
             Controls.Add(BtnOK);
+            Controls.Add(BtnNew);
             Controls.Add(EdName);
+            Controls.Add(BtnRemove);
             Controls.Add(label1);
+            Controls.Add(BtnEdit);
             FormBorderStyle = FormBorderStyle.FixedDialog;
             MaximizeBox = false;
             MinimizeBox = false;
