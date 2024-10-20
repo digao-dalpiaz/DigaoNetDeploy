@@ -29,7 +29,7 @@ namespace Manager
 
         private void BtnAdd_Click(object sender, EventArgs e)
         {
-            var f = new FrmServerEdit();
+            var f = new FrmServer();
             if (f.ShowDialog() == DialogResult.OK)
             {
                 var server = f.Server;
@@ -47,7 +47,7 @@ namespace Manager
             var server = List.SelectedItem as Server;
             if (server == null) return;
 
-            var f = new FrmServerEdit();
+            var f = new FrmServer();
             f.Server = server;
             if (f.ShowDialog() == DialogResult.OK)
             {

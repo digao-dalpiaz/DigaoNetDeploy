@@ -1,6 +1,6 @@
 ﻿namespace Manager
 {
-    partial class FrmServerEdit
+    partial class FrmServer
     {
         /// <summary>
         /// Required designer variable.

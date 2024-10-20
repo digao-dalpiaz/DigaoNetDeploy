@@ -2,12 +2,12 @@
 
 namespace Manager
 {
-    public partial class FrmServerEdit : Form
+    public partial class FrmServer : Form
     {
 
         public Server Server;
 
-        public FrmServerEdit()
+        public FrmServer()
         {
             InitializeComponent();
         }
