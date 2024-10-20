@@ -96,7 +96,7 @@ namespace Manager
             {
                 try
                 {
-
+                    new PipelineRunner(pipeline).Run(); 
                 }
                 catch (Exception ex)
                 {
