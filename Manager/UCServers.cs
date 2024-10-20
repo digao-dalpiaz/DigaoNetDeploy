@@ -15,7 +15,7 @@ namespace Manager
             MyToolStripRenderer.ConfigToolStrip(ToolBar);
             List.BackColor = Vars.BACKGROUND;
 
-            _listEngine = new(Vars.Config.Servers, List);
+            _listEngine = new(Vars.Config.Servers, List, "Server");
         }
 
         private void UCServers_Load(object sender, EventArgs e)

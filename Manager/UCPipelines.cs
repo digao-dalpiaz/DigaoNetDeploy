@@ -15,7 +15,7 @@ namespace Manager
             MyToolStripRenderer.ConfigToolStrip(ToolBar);
             List.BackColor = Vars.BACKGROUND;
 
-            _listEngine = new(Vars.Config.Pipelines, List);
+            _listEngine = new(Vars.Config.Pipelines, List, "Pipeline");
         }
 
         private void UCPipelines_Load(object sender, EventArgs e)

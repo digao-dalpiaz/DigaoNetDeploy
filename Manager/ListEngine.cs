@@ -7,7 +7,7 @@ namespace Manager
         public T ReturningObj;
     }
 
-    internal class ListEngine<T, TForm>(List<T> _storageList, ListBox _listBox) where TForm : ReturningForm<T>, new() where T : NamedClass
+    internal class ListEngine<T, TForm>(List<T> _storageList, ListBox _listBox, string _ident) where TForm : ReturningForm<T>, new() where T : NamedClass
     {
 
         public void FillList()
@@ -53,7 +53,7 @@ namespace Manager
             var obj = (T)_listBox.SelectedItem;
             if (obj == null) return;
 
-            if (MessageBox.Show($"Delete server '{obj.Name}'", "Delete server",
+            if (MessageBox.Show($"Delete {_ident} '{obj.Name}'?", $"Delete {_ident}",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 _storageList.Remove(obj);
