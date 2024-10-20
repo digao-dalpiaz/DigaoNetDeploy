@@ -100,7 +100,7 @@ namespace Manager
                 }
                 catch (Exception ex)
                 {
-                    LogService.Log("ERROR: " + ex.Message, Color.Crimson);
+                    LogService.Log("### FATAL ERROR: " + ex.Message, Color.Crimson);
                 }
                 
                 Invoke(() =>

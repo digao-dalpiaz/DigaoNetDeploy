@@ -32,6 +32,7 @@ namespace Manager.Utility
                 LogService.Log("ERROR: " + ex.Message, Color.Crimson);
             }
 
+            //close connections
             if (_sftp != null && _sftp.IsConnected)
             {
                 LogService.Log("Disconnecting from sftp...");
@@ -44,7 +45,15 @@ namespace Manager.Utility
                 _ssh.Disconnect();
             }
 
-            if (success) LogService.Log("Pipeline finished!", Color.Lime);
+            //final log
+            if (success)
+            {
+                LogService.Log("Pipeline finished!", Color.Lime);
+            }
+            else
+            {
+                LogService.Log("Pipeline ended unexpectedly!", Color.Gray);
+            }
         }
 
         private void FindServer()
