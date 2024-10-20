@@ -72,8 +72,10 @@ namespace Manager
 
         private void UpdConnectionButtons()
         {
-            BtnConnect.Enabled = List.SelectedIndex != -1;
-            BtnDisconnect.Enabled = false;
+            var server = List.SelectedItem as Server;
+
+            BtnConnect.Enabled = server?.Status == ServerStatus.DISCONNECTED;
+            BtnDisconnect.Enabled = server?.Status == ServerStatus.CONNECTED;
         }
         
     }
