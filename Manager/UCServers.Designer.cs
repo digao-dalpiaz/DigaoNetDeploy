@@ -43,28 +43,31 @@
             List.FormattingEnabled = true;
             List.IntegralHeight = false;
             List.ItemHeight = 48;
-            List.Location = new Point(0, 31);
+            List.Location = new Point(0, 47);
             List.Name = "List";
-            List.Size = new Size(541, 420);
+            List.Size = new Size(541, 404);
             List.TabIndex = 2;
             List.DrawItem += List_DrawItem;
             // 
             // ToolBar
             // 
+            ToolBar.GripStyle = ToolStripGripStyle.Hidden;
             ToolBar.ImageScalingSize = new Size(24, 24);
             ToolBar.Items.AddRange(new ToolStripItem[] { BtnAdd, BtnEdit, BtnDelete });
             ToolBar.Location = new Point(0, 0);
             ToolBar.Name = "ToolBar";
-            ToolBar.Size = new Size(541, 31);
+            ToolBar.Padding = new Padding(4);
+            ToolBar.ShowItemToolTips = false;
+            ToolBar.Size = new Size(541, 47);
             ToolBar.TabIndex = 3;
-            ToolBar.Text = "toolStrip1";
             // 
             // BtnAdd
             // 
             BtnAdd.Image = Properties.Resources.add;
             BtnAdd.ImageTransparentColor = Color.Magenta;
             BtnAdd.Name = "BtnAdd";
-            BtnAdd.Size = new Size(59, 28);
+            BtnAdd.Padding = new Padding(4);
+            BtnAdd.Size = new Size(67, 36);
             BtnAdd.Text = "New";
             BtnAdd.Click += BtnAdd_Click;
             // 
@@ -73,7 +76,8 @@
             BtnEdit.Image = Properties.Resources.edit;
             BtnEdit.ImageTransparentColor = Color.Magenta;
             BtnEdit.Name = "BtnEdit";
-            BtnEdit.Size = new Size(55, 28);
+            BtnEdit.Padding = new Padding(4);
+            BtnEdit.Size = new Size(63, 36);
             BtnEdit.Text = "Edit";
             BtnEdit.Click += BtnEdit_Click;
             // 
@@ -82,7 +86,8 @@
             BtnDelete.Image = Properties.Resources.delete;
             BtnDelete.ImageTransparentColor = Color.Magenta;
             BtnDelete.Name = "BtnDelete";
-            BtnDelete.Size = new Size(78, 28);
+            BtnDelete.Padding = new Padding(4);
+            BtnDelete.Size = new Size(86, 36);
             BtnDelete.Text = "Remove";
             BtnDelete.Click += BtnDelete_Click;
             // 
