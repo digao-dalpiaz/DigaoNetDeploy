@@ -48,6 +48,8 @@
             List.Name = "List";
             List.Size = new Size(656, 385);
             List.TabIndex = 3;
+            List.DrawItem += List_DrawItem;
+            List.DoubleClick += List_DoubleClick;
             // 
             // ToolBar
             // 

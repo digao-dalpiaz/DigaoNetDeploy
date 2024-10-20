@@ -71,5 +71,17 @@ namespace Manager
                 ConfigLoader.Save();
             }
         }
+
+        private void List_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            var pipeline = List.Items[e.Index] as Pipeline;
+
+            DrawItemEx.Draw(e, Properties.Resources.pipeline_blue, pipeline.Name);
+        }
+
+        private void List_DoubleClick(object sender, EventArgs e)
+        {
+            BtnEdit.PerformClick();
+        }
     }
 }
