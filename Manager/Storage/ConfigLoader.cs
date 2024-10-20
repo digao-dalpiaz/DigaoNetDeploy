@@ -20,7 +20,7 @@ namespace Manager.Storage
             }
             else
             {
-                Vars.Config = new Config();
+                Vars.Config = new();
                 Vars.Config.Servers = [];
                 Vars.Config.Pipelines = [];
             }
