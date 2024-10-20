@@ -16,7 +16,8 @@ namespace Manager.Definitions
                 [
                     new() { Ident = "LOCAL_FILE", Description = "Local file (this machine)" },
                     new() { Ident = "REMOTE_FILE", Description = "Remote file (server)" },
-                ]
+                ],
+                Action = (p) => new OperationsExec(p).CopyFile()
             },
 
             new()
@@ -30,21 +31,6 @@ namespace Manager.Definitions
                     new() { Ident = "REMOTE_FOLDER", Description = "Remote folder (server)" },
                 ],
                 Action = (p) => new OperationsExec(p).CopyFolder()
-            },
-
-
-
-            new()
-            {
-                Ident = "DEPLOY_APP_CICD",
-                Name = "Deploy Application using CI/CD",
-                Description = "...",
-                Arguments =
-                [
-                    new() { Ident = "", Description = "" },
-                    new() { Ident = "", Description = "" },
-                    new() { Ident = "", Description = "" },
-                ]
             },
         ];
 

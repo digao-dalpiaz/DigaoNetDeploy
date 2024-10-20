@@ -20,6 +20,19 @@ namespace Manager.Utility
             return value;
         }
 
+        public void CopyFile()
+        {
+            string from = GetArg("LOCAL_FILE");
+            string to = GetArg("REMOTE_FILE");
+
+            LogService.Log("Local File: " + from);
+            LogService.Log("Remote File: " + to);
+
+            var sftp = _params.GetSftp();
+
+
+        }
+
         public void CopyFolder()
         {
             string from = GetArg("LOCAL_FOLDER");
