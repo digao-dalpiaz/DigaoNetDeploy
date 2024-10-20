@@ -68,6 +68,7 @@
             BtnOK.TabIndex = 9;
             BtnOK.Text = "OK";
             BtnOK.UseVisualStyleBackColor = true;
+            BtnOK.Click += BtnOK_Click;
             // 
             // FrmStep
             // 
@@ -87,6 +88,7 @@
             ShowInTaskbar = false;
             StartPosition = FormStartPosition.CenterScreen;
             Text = "New Step";
+            Load += FrmStep_Load;
             ResumeLayout(false);
             PerformLayout();
         }

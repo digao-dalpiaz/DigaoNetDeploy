@@ -1,4 +1,5 @@
-﻿using Manager.Storage;
+﻿using Manager.Forms;
+using Manager.Storage;
 using Manager.Utility;
 
 namespace Manager
@@ -20,6 +21,7 @@ namespace Manager
                 Text = "Edit Pipeline";
 
                 EdName.Text = ReturningObj.Name;
+                ReturningObj.Steps.ForEach(x => Steps.Items.Add(x));
             }
         }
 
@@ -41,24 +43,43 @@ namespace Manager
             }
 
             ReturningObj.Name = EdName.Text;
-            //ReturningObj.Steps....
+            ReturningObj.Steps = Steps.Items.Cast<Step>().ToList();
 
             DialogResult = DialogResult.OK;
         }
 
         private void BtnNew_Click(object sender, EventArgs e)
         {
-
+            var f = new FrmStep();
+            if (f.ShowDialog() == DialogResult.OK)
+            {
+                Steps.Items.Add(f.Step);
+            }
         }
 
         private void BtnEdit_Click(object sender, EventArgs e)
         {
+            var step = Steps.SelectedItem as Step;
+            if (step == null) return;
 
+            var f = new FrmStep();
+            f.Step = step;
+            if (f.ShowDialog() == DialogResult.OK)
+            {
+                Steps.Invalidate();
+            }
         }
 
         private void BtnRemove_Click(object sender, EventArgs e)
         {
+            var step = Steps.SelectedItem as Step;
+            if (step == null) return;
 
+            if (MessageBox.Show($"Delete Step '{step.Name}'?", "Delete Step", 
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                Steps.Items.Remove(step);
+            }
         }
 
         private void BtnUp_Click(object sender, EventArgs e)
