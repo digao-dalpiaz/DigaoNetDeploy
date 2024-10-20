@@ -6,10 +6,14 @@
         public List<Pipeline> Pipelines;
     }
 
-    public class Server
+    public abstract class NamedClass
+    {
+        public string Name;
+    }
+
+    public class Server : NamedClass
     {
         public Guid Id;
-        public string Name;
         public string Host;
         public short Port;
         public string User;
@@ -17,9 +21,8 @@
         public string KeyFile;
     }
 
-    public class Pipeline
+    public class Pipeline : NamedClass
     {
-        public string Name;
         public List<Step> Steps;
     }
 

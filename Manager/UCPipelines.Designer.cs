@@ -96,6 +96,7 @@
             BtnUp.Name = "BtnUp";
             BtnUp.Size = new Size(83, 28);
             BtnUp.Text = "Move Up";
+            BtnUp.Click += BtnUp_Click;
             // 
             // BtnDown
             // 
@@ -104,6 +105,7 @@
             BtnDown.Name = "BtnDown";
             BtnDown.Size = new Size(99, 28);
             BtnDown.Text = "Move Down";
+            BtnDown.Click += BtnDown_Click;
             // 
             // UCPipelines
             // 

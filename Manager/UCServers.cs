@@ -5,71 +5,37 @@ namespace Manager
 {
     public partial class UCServers : UserControl
     {
+
+        private readonly ListEngine<Server, FrmServer> _listEngine;
+
         public UCServers()
         {
             InitializeComponent();
 
             MyToolStripRenderer.ConfigToolStrip(ToolBar);
-
             List.BackColor = Vars.BACKGROUND;
+
+            _listEngine = new(Vars.Config.Servers, List);
         }
 
         private void UCServers_Load(object sender, EventArgs e)
         {
-            FillList();
-        }
-
-        private void FillList()
-        {
-            foreach (var server in Vars.Config.Servers)
-            {
-                List.Items.Add(server);
-            }
+            _listEngine.FillList();
         }
 
         private void BtnAdd_Click(object sender, EventArgs e)
         {
-            var f = new FrmServer();
-            if (f.ShowDialog() == DialogResult.OK)
-            {
-                var server = f.Server;
-
-                Vars.Config.Servers.Add(server);
-                List.Items.Add(server);
-                List.SelectedItem = server;
-
-                ConfigLoader.Save();
-            }
+            _listEngine.Add();
         }
 
         private void BtnEdit_Click(object sender, EventArgs e)
         {
-            var server = List.SelectedItem as Server;
-            if (server == null) return;
-
-            var f = new FrmServer();
-            f.Server = server;
-            if (f.ShowDialog() == DialogResult.OK)
-            {
-                List.Invalidate();
-
-                ConfigLoader.Save();
-            }
+            _listEngine.Edit();
         }
 
         private void BtnDelete_Click(object sender, EventArgs e)
         {
-            var server = List.SelectedItem as Server;
-            if (server == null) return;
-
-            if (MessageBox.Show($"Delete server '{server.Name}'", "Delete server",
-                MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-            {
-                Vars.Config.Servers.Remove(server);
-                List.Items.Remove(server);
-
-                ConfigLoader.Save();
-            }
+            _listEngine.Delete();
         }
 
         private void List_DrawItem(object sender, DrawItemEventArgs e)
@@ -85,33 +51,14 @@ namespace Manager
             BtnEdit.PerformClick();
         }
 
-        private void MoveItem(int flag)
-        {
-            var index = List.SelectedIndex;
-            if (index == -1) return;
-
-            var newIndex = index + flag;
-            if (newIndex < 0 || newIndex > List.Items.Count-1) return;
-
-            var obj = List.Items[index] as Server;
-
-            List.Items.RemoveAt(index);
-            List.Items.Insert(newIndex, obj);
-            List.SelectedIndex = newIndex;
-
-            Vars.Config.Servers.RemoveAt(index);
-            Vars.Config.Servers.Insert(newIndex, obj);
-            ConfigLoader.Save();
-        }
-
         private void BtnUp_Click(object sender, EventArgs e)
         {
-            MoveItem(-1);
+            _listEngine.MoveUp();
         }
 
         private void BtnDown_Click(object sender, EventArgs e)
         {
-            MoveItem(+1);
+            _listEngine.MoveDown();
         }
     }
 }
