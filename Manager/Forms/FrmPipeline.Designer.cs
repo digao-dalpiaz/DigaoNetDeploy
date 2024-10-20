@@ -88,6 +88,7 @@
             Steps.Size = new Size(464, 296);
             Steps.TabIndex = 1;
             Steps.DrawItem += Steps_DrawItem;
+            Steps.DoubleClick += Steps_DoubleClick;
             // 
             // label2
             // 

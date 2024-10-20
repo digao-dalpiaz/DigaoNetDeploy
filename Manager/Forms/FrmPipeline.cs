@@ -101,5 +101,10 @@ namespace Manager
             DrawItemEx.Draw(e, Properties.Resources.step, step.Name, Color.Black, Color.Gold);
         }
 
+        private void Steps_DoubleClick(object sender, EventArgs e)
+        {
+            BtnEdit.PerformClick();
+        }
+
     }
 }
