@@ -88,7 +88,7 @@ namespace Manager.Utility
                 var opDef = OperationDefList.Operations.Find(x => x.Ident == step.Operation);
                 if (opDef == null) throw new Exception($"Operation '{step.Operation}' not found");
 
-                LogService.Log("Operation: " + opDef.Name, Color.Purple);
+                LogService.Log("Operation: " + opDef.Name, Color.RebeccaPurple);
 
                 var args = GetArguments(step);
 

@@ -88,6 +88,8 @@ namespace Manager
             Vars.PipelineRunning = true;
             UpdRunButton();
 
+            LogService.Clear();
+
             var pipeline = List.SelectedItem as Pipeline;
 
             LogService.Log($"Run pipeline '{pipeline.Name}'");

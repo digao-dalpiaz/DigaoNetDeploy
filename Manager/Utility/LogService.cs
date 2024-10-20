@@ -73,5 +73,10 @@
             });
         }
 
+        public static void Clear()
+        {
+            LogControl.Clear();
+        }
+
     }
 }
