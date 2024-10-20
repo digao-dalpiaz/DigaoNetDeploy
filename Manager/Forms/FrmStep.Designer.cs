@@ -36,6 +36,8 @@
             EdOperation = new ComboBox();
             OpArgsList = new ListBox();
             EdArgs = new TextBox();
+            label3 = new Label();
+            label4 = new Label();
             SuspendLayout();
             // 
             // EdName
@@ -57,7 +59,7 @@
             // BtnCancel
             // 
             BtnCancel.DialogResult = DialogResult.Cancel;
-            BtnCancel.Location = new Point(400, 408);
+            BtnCancel.Location = new Point(400, 432);
             BtnCancel.Name = "BtnCancel";
             BtnCancel.Size = new Size(104, 32);
             BtnCancel.TabIndex = 10;
@@ -66,7 +68,7 @@
             // 
             // BtnOK
             // 
-            BtnOK.Location = new Point(296, 408);
+            BtnOK.Location = new Point(296, 432);
             BtnOK.Name = "BtnOK";
             BtnOK.Size = new Size(96, 32);
             BtnOK.TabIndex = 9;
@@ -98,9 +100,9 @@
             OpArgsList.FormattingEnabled = true;
             OpArgsList.IntegralHeight = false;
             OpArgsList.ItemHeight = 15;
-            OpArgsList.Location = new Point(16, 128);
+            OpArgsList.Location = new Point(16, 144);
             OpArgsList.Name = "OpArgsList";
-            OpArgsList.Size = new Size(768, 120);
+            OpArgsList.Size = new Size(760, 96);
             OpArgsList.TabIndex = 13;
             // 
             // EdArgs
@@ -110,9 +112,27 @@
             EdArgs.Multiline = true;
             EdArgs.Name = "EdArgs";
             EdArgs.ScrollBars = ScrollBars.Both;
-            EdArgs.Size = new Size(768, 128);
+            EdArgs.Size = new Size(760, 160);
             EdArgs.TabIndex = 14;
             EdArgs.WordWrap = false;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(14, 126);
+            label3.Name = "label3";
+            label3.Size = new Size(90, 15);
+            label3.TabIndex = 15;
+            label3.Text = "Arguments info";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(14, 246);
+            label4.Name = "label4";
+            label4.Size = new Size(66, 15);
+            label4.TabIndex = 16;
+            label4.Text = "Arguments";
             // 
             // FrmStep
             // 
@@ -120,7 +140,9 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             CancelButton = BtnCancel;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(793, 474);
+            Controls.Add(label4);
+            Controls.Add(label3);
             Controls.Add(EdArgs);
             Controls.Add(OpArgsList);
             Controls.Add(EdOperation);
@@ -151,5 +173,7 @@
         private ComboBox EdOperation;
         private ListBox OpArgsList;
         private TextBox EdArgs;
+        private Label label3;
+        private Label label4;
     }
 }

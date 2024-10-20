@@ -133,7 +133,7 @@ namespace Manager
 
         private void FrmPipeline_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (_modified)
+            if (_modified && DialogResult != DialogResult.OK)
             {
                 if (MessageBox.Show("Steps have been modified. Discard the changes?", "Discard Changes", 
                     MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
