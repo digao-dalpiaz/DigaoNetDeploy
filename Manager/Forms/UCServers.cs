@@ -54,7 +54,9 @@ namespace Manager
             if (e.Index == -1) return;
             var server = List.Items[e.Index] as Server;
 
-            DrawItemEx.Draw(e, Properties.Resources.server_blue, server.Name);
+            DrawItemEx.Draw(e, server.Status == ServerStatus.CONNECTED ? 
+                Properties.Resources.linux_connected 
+                : Properties.Resources.server_blue, server.Name);
         }
 
         private void List_DoubleClick(object sender, EventArgs e)
