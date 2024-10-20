@@ -1,5 +1,4 @@
 ﻿using Manager.Definitions;
-using Renci.SshNet;
 
 namespace Manager.Utility
 {
