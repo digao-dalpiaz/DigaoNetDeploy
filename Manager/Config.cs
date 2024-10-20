@@ -15,22 +15,12 @@
         public string User;
         public string Password;
         public string KeyFile;
-
-        public override string ToString()
-        {
-            return Name;
-        }
     }
 
     public class Pipeline
     {
         public string Name;
         public List<Step> Steps;
-
-        public override string ToString()
-        {
-            return Name;
-        }
     }
 
     public class Step
