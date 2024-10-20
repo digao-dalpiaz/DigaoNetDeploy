@@ -1,6 +1,6 @@
 ﻿using Manager.Storage;
 
-namespace Manager
+namespace Manager.Utility
 {
     internal class ListEngine<T, TForm>(List<T> _storageList, ListBox _listBox, string _ident) where TForm : ReturningForm<T>, new() where T : NamedClass
     {
@@ -64,7 +64,7 @@ namespace Manager
             if (index == -1) return;
 
             var newIndex = index + flag;
-            if (newIndex < 0 || newIndex > _listBox.Items.Count-1) return;
+            if (newIndex < 0 || newIndex > _listBox.Items.Count - 1) return;
 
             var obj = (T)_listBox.Items[index];
 

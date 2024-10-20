@@ -1,5 +1,6 @@
 ﻿using Manager.Storage;
 using Manager.Theme;
+using Manager.Utility;
 
 namespace Manager
 {
