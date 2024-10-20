@@ -7,7 +7,7 @@
 
         public override string ToString()
         {
-            return Ident;
+            return Ident + " : " + Description;
         }
     }
 }

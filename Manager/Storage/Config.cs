@@ -44,5 +44,6 @@ namespace Manager.Storage
     {
         public string Name;
         public string Operation;
+        public string Arguments;
     }
 }

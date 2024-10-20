@@ -31,6 +31,7 @@ namespace Manager.Forms
                 this.Text = "Edit Step";
 
                 EdName.Text = Step.Name;
+                EdArgs.Text = Step.Arguments;
 
                 var op = OperationDefList.Operations.Find(x => x.Ident == Step.Operation);
                 if (op != null) EdOperation.SelectedItem = op;
@@ -58,6 +59,7 @@ namespace Manager.Forms
 
             Step.Name = EdName.Text;
             Step.Operation = operation.Ident;
+            Step.Arguments = EdArgs.Text;
 
             DialogResult = DialogResult.OK;
         }

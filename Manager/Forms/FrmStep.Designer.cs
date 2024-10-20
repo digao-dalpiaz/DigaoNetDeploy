@@ -35,6 +35,7 @@
             label2 = new Label();
             EdOperation = new ComboBox();
             OpArgsList = new ListBox();
+            EdArgs = new TextBox();
             SuspendLayout();
             // 
             // EdName
@@ -56,7 +57,7 @@
             // BtnCancel
             // 
             BtnCancel.DialogResult = DialogResult.Cancel;
-            BtnCancel.Location = new Point(400, 328);
+            BtnCancel.Location = new Point(400, 408);
             BtnCancel.Name = "BtnCancel";
             BtnCancel.Size = new Size(104, 32);
             BtnCancel.TabIndex = 10;
@@ -65,7 +66,7 @@
             // 
             // BtnOK
             // 
-            BtnOK.Location = new Point(296, 328);
+            BtnOK.Location = new Point(296, 408);
             BtnOK.Name = "BtnOK";
             BtnOK.Size = new Size(96, 32);
             BtnOK.TabIndex = 9;
@@ -97,10 +98,21 @@
             OpArgsList.FormattingEnabled = true;
             OpArgsList.IntegralHeight = false;
             OpArgsList.ItemHeight = 15;
-            OpArgsList.Location = new Point(120, 136);
+            OpArgsList.Location = new Point(16, 128);
             OpArgsList.Name = "OpArgsList";
-            OpArgsList.Size = new Size(272, 160);
+            OpArgsList.Size = new Size(768, 120);
             OpArgsList.TabIndex = 13;
+            // 
+            // EdArgs
+            // 
+            EdArgs.Font = new Font("Consolas", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            EdArgs.Location = new Point(16, 264);
+            EdArgs.Multiline = true;
+            EdArgs.Name = "EdArgs";
+            EdArgs.ScrollBars = ScrollBars.Both;
+            EdArgs.Size = new Size(768, 128);
+            EdArgs.TabIndex = 14;
+            EdArgs.WordWrap = false;
             // 
             // FrmStep
             // 
@@ -109,6 +121,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             CancelButton = BtnCancel;
             ClientSize = new Size(800, 450);
+            Controls.Add(EdArgs);
             Controls.Add(OpArgsList);
             Controls.Add(EdOperation);
             Controls.Add(label2);
@@ -137,5 +150,6 @@
         private Label label2;
         private ComboBox EdOperation;
         private ListBox OpArgsList;
+        private TextBox EdArgs;
     }
 }
