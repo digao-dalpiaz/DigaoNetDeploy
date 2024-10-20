@@ -50,7 +50,7 @@
             BtnServers.Image = Properties.Resources.server_orange;
             BtnServers.ImageTransparentColor = Color.Magenta;
             BtnServers.Name = "BtnServers";
-            BtnServers.Size = new Size(104, 52);
+            BtnServers.Size = new Size(94, 52);
             BtnServers.Text = "Servers";
             BtnServers.Click += BtnServers_Click;
             // 
@@ -59,7 +59,7 @@
             BtnPipelines.Image = Properties.Resources.pipeline_orange;
             BtnPipelines.ImageTransparentColor = Color.Magenta;
             BtnPipelines.Name = "BtnPipelines";
-            BtnPipelines.Size = new Size(104, 52);
+            BtnPipelines.Size = new Size(94, 52);
             BtnPipelines.Text = "Pipelines";
             BtnPipelines.Click += BtnPipelines_Click;
             // 
