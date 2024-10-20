@@ -8,7 +8,7 @@
 
             ToolStripRenderer.ConfigToolStrip(ToolBar);
 
-            List.BackColor = Color.FromArgb(30, 30, 30);
+            List.BackColor = Vars.BACKGROUND;
         }
 
         private void UCServers_Load(object sender, EventArgs e)

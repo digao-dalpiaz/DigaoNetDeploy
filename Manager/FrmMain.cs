@@ -13,8 +13,11 @@ namespace Manager
 
             this.Icon = Icon.ExtractAssociatedIcon(Assembly.GetExecutingAssembly().Location);
 
+            DarkTitle.UseImmersiveDarkMode(this.Handle);
+
             ToolStripRenderer.ConfigToolStrip(ToolBar);
-            
+
+            BackColor = Vars.BACKGROUND;
 
             _ucServers = new();
             _ucServers.Visible = false;
