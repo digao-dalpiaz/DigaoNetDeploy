@@ -2,7 +2,7 @@
 
 namespace Manager
 {
-    public partial class FrmPipeline : Form
+    public partial class FrmPipeline : ReturningForm<Pipeline>
     {
 
         public Pipeline Pipeline;

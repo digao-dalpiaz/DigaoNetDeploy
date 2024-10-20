@@ -2,7 +2,12 @@
 
 namespace Manager
 {
-    internal class ListEngine<T, TForm>(List<T> _storageList, ListBox _listBox) where TForm : Form, new() where T : NamedClass
+    public class ReturningForm<T> : Form 
+    {
+        public T ReturningObj;
+    }
+
+    internal class ListEngine<T, TForm>(List<T> _storageList, ListBox _listBox) where TForm : ReturningForm<T>, new() where T : NamedClass
     {
 
         public void FillList()
@@ -18,11 +23,11 @@ namespace Manager
             var f = new TForm();
             if (f.ShowDialog() == DialogResult.OK)
             {
-                var server = f.Server;
+                var obj = f.ReturningObj;
 
-                _storageList.Add(server);
-                _listBox.Items.Add(server);
-                _listBox.SelectedItem = server;
+                _storageList.Add(obj);
+                _listBox.Items.Add(obj);
+                _listBox.SelectedItem = obj;
 
                 ConfigLoader.Save();
             }
@@ -34,7 +39,7 @@ namespace Manager
             if (obj == null) return;
 
             var f = new TForm();
-            f.Server = obj;
+            f.ReturningObj = obj;
             if (f.ShowDialog() == DialogResult.OK)
             {
                 _listBox.Invalidate();

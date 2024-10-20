@@ -2,10 +2,8 @@
 
 namespace Manager
 {
-    public partial class FrmServer : Form
+    public partial class FrmServer : ReturningForm<Server>
     {
-
-        public Server Server;
 
         public FrmServer()
         {
@@ -14,20 +12,20 @@ namespace Manager
 
         private void FrmServerEdit_Load(object sender, EventArgs e)
         {
-            if (Server != null)
+            if (ReturningObj != null)
             {
                 Text = "Edit Server";
 
-                EdName.Text = Server.Name;
-                EdHost.Text = Server.Host;
-                EdPort.Text = Server.Port.ToString();
-                EdUser.Text = Server.User;
-                EdPassword.Text = Server.Password;
-                EdKeyFile.Text = Server.KeyFile;
+                EdName.Text = ReturningObj.Name;
+                EdHost.Text = ReturningObj.Host;
+                EdPort.Text = ReturningObj.Port.ToString();
+                EdUser.Text = ReturningObj.User;
+                EdPassword.Text = ReturningObj.Password;
+                EdKeyFile.Text = ReturningObj.KeyFile;
             }
         }
 
-        private bool ValidateField(TextBox ed, string fieldName)
+        private static bool ValidateField(TextBox ed, string fieldName)
         {
             ed.Text = ed.Text.Trim();
             if (ed.Text == string.Empty)
@@ -56,18 +54,18 @@ namespace Manager
 
             //
 
-            if (Server == null)
+            if (ReturningObj == null)
             {
-                Server = new();
-                Server.Id = Guid.NewGuid();
+                ReturningObj = new();
+                ReturningObj.Id = Guid.NewGuid();
             }
 
-            Server.Name = EdName.Text;
-            Server.Host = EdHost.Text;
-            Server.Port = short.Parse(EdPort.Text);
-            Server.User = EdUser.Text;
-            Server.Password = EdPassword.Text;
-            Server.KeyFile = EdKeyFile.Text;
+            ReturningObj.Name = EdName.Text;
+            ReturningObj.Host = EdHost.Text;
+            ReturningObj.Port = short.Parse(EdPort.Text);
+            ReturningObj.User = EdUser.Text;
+            ReturningObj.Password = EdPassword.Text;
+            ReturningObj.KeyFile = EdKeyFile.Text;
 
             DialogResult = DialogResult.OK;
         }
