@@ -32,6 +32,7 @@ namespace Manager.Utility
                 if (sftp.Exists(to))
                 {
                     var remoteFiles = sftp.ListDirectory(to).Where(x => x.Name != "." && x.Name != "..");
+                    LogService.Log("Files to delete: " + remoteFiles.Count());
                     foreach (var file in remoteFiles)
                     {
                         LogService.Log($"Deleting existing file '{file.FullName}'...");
@@ -44,6 +45,7 @@ namespace Manager.Utility
                 }
 
                 var localFiles = Directory.GetFiles(from);
+                LogService.Log("Files to upload: " + localFiles.Length);
                 foreach (var file in localFiles)
                 {
                     using (var fileStream = new FileStream(file, FileMode.Open, FileAccess.Read))
@@ -54,8 +56,6 @@ namespace Manager.Utility
                         sftp.UploadFile(fileStream, remoteFileName);
                     }
                 }
-
-                LogService.Log("Uploaded Files: " + localFiles.Length);
 
                 sftp.Disconnect();
             }
