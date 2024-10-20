@@ -3,7 +3,7 @@ using System.Reflection;
 
 namespace Manager.Utility
 {
-    public class ListEngine<T, TForm>(List<T> _storageList, ListBox _listBox, string _ident) where TForm : Form, new() where T : NamedClass
+    internal class ListEngine<T, TForm>(List<T> _storageList, ListBox _listBox, string _ident) where TForm : Form, new() where T : NamedClass
     {
 
         public void FillList()
