@@ -95,6 +95,7 @@ namespace Manager
 
             Steps.Items.RemoveAt(index);
             Steps.Items.Insert(newIndex, step);
+            Steps.SelectedIndex = newIndex;
         }
 
         private void BtnUp_Click(object sender, EventArgs e)
