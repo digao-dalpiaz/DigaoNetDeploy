@@ -22,7 +22,7 @@ namespace Manager.Storage
     {
         public Guid Id;
         public string Host;
-        public short Port;
+        public int Port;
         public string User;
         public string Password;
         public string KeyFile;

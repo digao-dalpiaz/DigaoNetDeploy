@@ -34,7 +34,7 @@ namespace Manager
             if (!Messages.ValidateField(EdHost, "Host")) return;
             if (!Messages.ValidateField(EdPort, "Port")) return;
 
-            if (!short.TryParse(EdPort.Text, out _))
+            if (!int.TryParse(EdPort.Text, out var port))
             {
                 Messages.Error("Port is invalid");
                 return;
@@ -52,7 +52,7 @@ namespace Manager
 
             ReturningObj.Name = EdName.Text;
             ReturningObj.Host = EdHost.Text;
-            ReturningObj.Port = short.Parse(EdPort.Text);
+            ReturningObj.Port = port;
             ReturningObj.User = EdUser.Text;
             ReturningObj.Password = EdPassword.Text;
             ReturningObj.KeyFile = EdKeyFile.Text;
