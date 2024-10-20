@@ -10,6 +10,8 @@ namespace Manager
 
         public Pipeline ReturningObj { get; set; }
 
+        private bool _modified;
+
         public FrmPipeline()
         {
             InitializeComponent();
@@ -55,6 +57,8 @@ namespace Manager
             if (f.ShowDialog() == DialogResult.OK)
             {
                 Steps.Items.Add(f.Step);
+
+                _modified = true;
             }
         }
 
@@ -68,6 +72,8 @@ namespace Manager
             if (f.ShowDialog() == DialogResult.OK)
             {
                 Steps.Invalidate();
+
+                _modified = true;
             }
         }
 
@@ -80,6 +86,8 @@ namespace Manager
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 Steps.Items.Remove(step);
+
+                _modified = true;
             }
         }
 
@@ -96,6 +104,8 @@ namespace Manager
             Steps.Items.RemoveAt(index);
             Steps.Items.Insert(newIndex, step);
             Steps.SelectedIndex = newIndex;
+
+            _modified = true;
         }
 
         private void BtnUp_Click(object sender, EventArgs e)
@@ -121,5 +131,16 @@ namespace Manager
             BtnEdit.PerformClick();
         }
 
+        private void FrmPipeline_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (_modified)
+            {
+                if (MessageBox.Show("Discard the changes?", "Discard Changes", 
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                {
+                    e.Cancel = true;
+                }
+            }
+        }
     }
 }

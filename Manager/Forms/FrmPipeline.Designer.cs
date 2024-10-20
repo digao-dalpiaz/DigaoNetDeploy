@@ -174,6 +174,7 @@
             ShowInTaskbar = false;
             StartPosition = FormStartPosition.CenterScreen;
             Text = "New Pipeline";
+            FormClosing += FrmPipeline_FormClosing;
             Load += FrmPipeline_Load;
             ResumeLayout(false);
             PerformLayout();
