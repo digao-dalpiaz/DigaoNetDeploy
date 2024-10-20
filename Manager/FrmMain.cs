@@ -20,9 +20,6 @@ namespace Manager
             MyToolStripRenderer.ConfigToolStrip(ToolBar);
 
             BackColor = Vars.BACKGROUND;
-
-            CreateUC<UCServers>();
-            CreateUC<UCPipelines>();
         }
 
         private void CreateUC<T>() where T : UserControl, new()
@@ -48,6 +45,9 @@ namespace Manager
         private void FrmMain_Load(object sender, EventArgs e)
         {
             ConfigLoader.Load();
+
+            CreateUC<UCServers>();
+            CreateUC<UCPipelines>();
         }
 
         private void BtnServers_Click(object sender, EventArgs e)
