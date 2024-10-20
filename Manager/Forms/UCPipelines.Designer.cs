@@ -35,6 +35,7 @@
             BtnDelete = new ToolStripButton();
             BtnUp = new ToolStripButton();
             BtnDown = new ToolStripButton();
+            BtnRun = new ToolStripButton();
             ToolBar.SuspendLayout();
             SuspendLayout();
             // 
@@ -57,7 +58,7 @@
             // ToolBar
             // 
             ToolBar.ImageScalingSize = new Size(24, 24);
-            ToolBar.Items.AddRange(new ToolStripItem[] { BtnAdd, BtnEdit, BtnDelete, BtnUp, BtnDown });
+            ToolBar.Items.AddRange(new ToolStripItem[] { BtnAdd, BtnEdit, BtnDelete, BtnUp, BtnDown, BtnRun });
             ToolBar.Location = new Point(0, 0);
             ToolBar.Name = "ToolBar";
             ToolBar.Size = new Size(656, 31);
@@ -108,6 +109,14 @@
             BtnDown.Text = "Move Down";
             BtnDown.Click += BtnDown_Click;
             // 
+            // BtnRun
+            // 
+            BtnRun.Image = Properties.Resources.run;
+            BtnRun.ImageTransparentColor = Color.Magenta;
+            BtnRun.Name = "BtnRun";
+            BtnRun.Size = new Size(56, 28);
+            BtnRun.Text = "Run";
+            // 
             // UCPipelines
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -132,5 +141,6 @@
         private ToolStripButton BtnDelete;
         private ToolStripButton BtnUp;
         private ToolStripButton BtnDown;
+        private ToolStripButton BtnRun;
     }
 }
