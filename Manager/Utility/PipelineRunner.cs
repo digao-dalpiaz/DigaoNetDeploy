@@ -113,6 +113,7 @@ namespace Manager.Utility
             if (_sftp == null)
             {
                 _sftp = new SftpClient(_server.Host, _server.Port, _server.User, new PrivateKeyFile(_server.KeyFile));
+
                 LogService.Log("Connecting to SFTP service...");
                 _sftp.Connect();
                 LogService.Log("Connected!");
