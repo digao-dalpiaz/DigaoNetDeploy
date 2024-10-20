@@ -40,7 +40,7 @@ namespace Manager.Utility
                         string remoteFileName = to + "/" + Path.GetFileName(file);
 
                         LogService.Log($"Send file from '{file}' to '{remoteFileName}'");
-                        //sftp.UploadFile(fileStream, remoteFileName);
+                        sftp.UploadFile(fileStream, remoteFileName);
                     }
                 }
 
