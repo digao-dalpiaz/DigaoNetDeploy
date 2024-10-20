@@ -8,7 +8,8 @@
             new()
             {
                 Ident = "DEPLOY_APP_CICD",
-                Description = "Deploy Application using CI/CD",
+                Name = "Deploy Application using CI/CD",
+                Description = "...",
                 Arguments =
                 [
                     new() { Ident = "", Description = "" },

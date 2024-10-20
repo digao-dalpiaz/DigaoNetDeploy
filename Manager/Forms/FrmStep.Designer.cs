@@ -34,6 +34,7 @@
             BtnOK = new Button();
             label2 = new Label();
             EdOperation = new ComboBox();
+            OpArgsList = new ListBox();
             SuspendLayout();
             // 
             // EdName
@@ -89,6 +90,17 @@
             EdOperation.Name = "EdOperation";
             EdOperation.Size = new Size(400, 23);
             EdOperation.TabIndex = 12;
+            EdOperation.SelectedIndexChanged += EdOperation_SelectedIndexChanged;
+            // 
+            // OpArgsList
+            // 
+            OpArgsList.FormattingEnabled = true;
+            OpArgsList.IntegralHeight = false;
+            OpArgsList.ItemHeight = 15;
+            OpArgsList.Location = new Point(120, 136);
+            OpArgsList.Name = "OpArgsList";
+            OpArgsList.Size = new Size(272, 160);
+            OpArgsList.TabIndex = 13;
             // 
             // FrmStep
             // 
@@ -97,6 +109,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             CancelButton = BtnCancel;
             ClientSize = new Size(800, 450);
+            Controls.Add(OpArgsList);
             Controls.Add(EdOperation);
             Controls.Add(label2);
             Controls.Add(BtnCancel);
@@ -123,5 +136,6 @@
         private Button BtnOK;
         private Label label2;
         private ComboBox EdOperation;
+        private ListBox OpArgsList;
     }
 }
