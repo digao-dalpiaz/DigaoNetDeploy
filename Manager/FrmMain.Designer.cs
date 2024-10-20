@@ -42,7 +42,7 @@
             ToolBar.Items.AddRange(new ToolStripItem[] { BtnServers, BtnPipelines });
             ToolBar.Location = new Point(0, 0);
             ToolBar.Name = "ToolBar";
-            ToolBar.Size = new Size(91, 473);
+            ToolBar.Size = new Size(107, 473);
             ToolBar.TabIndex = 0;
             // 
             // BtnServers
@@ -50,7 +50,7 @@
             BtnServers.Image = Properties.Resources.server_orange;
             BtnServers.ImageTransparentColor = Color.Magenta;
             BtnServers.Name = "BtnServers";
-            BtnServers.Size = new Size(88, 36);
+            BtnServers.Size = new Size(104, 52);
             BtnServers.Text = "Servers";
             BtnServers.Click += BtnServers_Click;
             // 
@@ -59,16 +59,16 @@
             BtnPipelines.Image = Properties.Resources.pipeline_orange;
             BtnPipelines.ImageTransparentColor = Color.Magenta;
             BtnPipelines.Name = "BtnPipelines";
-            BtnPipelines.Size = new Size(88, 36);
+            BtnPipelines.Size = new Size(104, 52);
             BtnPipelines.Text = "Pipelines";
             BtnPipelines.Click += BtnPipelines_Click;
             // 
             // BoxUC
             // 
             BoxUC.Dock = DockStyle.Fill;
-            BoxUC.Location = new Point(91, 0);
+            BoxUC.Location = new Point(107, 0);
             BoxUC.Name = "BoxUC";
-            BoxUC.Size = new Size(609, 473);
+            BoxUC.Size = new Size(593, 473);
             BoxUC.TabIndex = 1;
             // 
             // FrmMain
