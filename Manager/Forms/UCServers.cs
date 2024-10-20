@@ -91,7 +91,7 @@ namespace Manager
             server.Tunnel.ErrorOccurred += Tunnel_ErrorOccurred;
             server.Tunnel.ServerIdentificationReceived += Tunnel_ServerIdentificationReceived;
 
-            LogService.Log($"Connecting to server {server.Name}...");
+            LogServer(server, "Connecting...");
 
             Task.Run(() =>
             {
@@ -100,12 +100,12 @@ namespace Manager
                     server.Tunnel.Connect();
                     server.Status = ServerStatus.CONNECTED;
 
-                    LogService.Log("Connected successfully!", Color.Lime);
+                    LogServer(server, "Connected successfully!", Color.Lime);
                 }
                 catch (Exception ex)
                 {
                     server.Status = ServerStatus.DISCONNECTED;
-                    LogService.Log("ERROR ON CONNECTING: " + ex.Message, Color.Crimson);
+                    LogServer(server, "ERROR ON CONNECTING: " + ex.Message, Color.Crimson);
                 }
 
                 Invoke(() =>
@@ -120,28 +120,34 @@ namespace Manager
             return Vars.Config.Servers.Find(x => x.Tunnel == tunnel);
         }
 
+        private static void LogServer(Server server, string message, Color? color = null)
+        {
+            LogService.Log($"{server.Name} > {message}", color);
+        }
+
         private void Tunnel_ServerIdentificationReceived(object sender, SshIdentificationEventArgs e)
         {
             var server = GetServerFromTunnel((SshClient)sender);
 
-            LogService.Log($"{server.Name} > Server identification: {e.SshIdentification}");
+            LogServer(server, $"Server identification: {e.SshIdentification}");
         }
 
         private void Tunnel_ErrorOccurred(object sender, ExceptionEventArgs e)
         {
             var server = GetServerFromTunnel((SshClient)sender);
 
-            LogService.Log($"{server.Name} > ERROR: {e.Exception.Message}", Color.Crimson);
+            LogServer(server, $"ERROR: {e.Exception.Message}", Color.Crimson);
         }
 
         private void BtnDisconnect_Click(object sender, EventArgs e)
         {
             var server = List.SelectedItem as Server;
 
-            LogService.Log($"Disconnect server {server.Name}");
+            LogServer(server, "Disconnecting...");
             server.Tunnel.Disconnect();
-            LogService.Log($"Disconnected server {server.Name}");
+            LogServer(server, "Disconnected.");
 
+            server.Status = ServerStatus.DISCONNECTED;
             UpdConnectionButtons();
         }
     }
