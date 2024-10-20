@@ -74,6 +74,7 @@ namespace Manager
 
         private void List_DrawItem(object sender, DrawItemEventArgs e)
         {
+            if (e.Index == -1) return;
             var pipeline = List.Items[e.Index] as Pipeline;
 
             DrawItemEx.Draw(e, Properties.Resources.pipeline_blue, pipeline.Name);

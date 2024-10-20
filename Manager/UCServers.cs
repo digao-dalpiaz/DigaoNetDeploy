@@ -74,6 +74,7 @@ namespace Manager
 
         private void List_DrawItem(object sender, DrawItemEventArgs e)
         {
+            if (e.Index == -1) return;
             var server = List.Items[e.Index] as Server;
 
             DrawItemEx.Draw(e, Properties.Resources.server_blue, server.Name);
