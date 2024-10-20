@@ -32,6 +32,8 @@
             label1 = new Label();
             BtnCancel = new Button();
             BtnOK = new Button();
+            label2 = new Label();
+            EdOperation = new ComboBox();
             SuspendLayout();
             // 
             // EdName
@@ -70,6 +72,24 @@
             BtnOK.UseVisualStyleBackColor = true;
             BtnOK.Click += BtnOK_Click;
             // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(14, 70);
+            label2.Name = "label2";
+            label2.Size = new Size(60, 15);
+            label2.TabIndex = 11;
+            label2.Text = "Operation";
+            // 
+            // EdOperation
+            // 
+            EdOperation.DropDownStyle = ComboBoxStyle.DropDownList;
+            EdOperation.FormattingEnabled = true;
+            EdOperation.Location = new Point(16, 88);
+            EdOperation.Name = "EdOperation";
+            EdOperation.Size = new Size(400, 23);
+            EdOperation.TabIndex = 12;
+            // 
             // FrmStep
             // 
             AcceptButton = BtnOK;
@@ -77,6 +97,8 @@
             AutoScaleMode = AutoScaleMode.Font;
             CancelButton = BtnCancel;
             ClientSize = new Size(800, 450);
+            Controls.Add(EdOperation);
+            Controls.Add(label2);
             Controls.Add(BtnCancel);
             Controls.Add(BtnOK);
             Controls.Add(EdName);
@@ -99,5 +121,7 @@
         private Label label1;
         private Button BtnCancel;
         private Button BtnOK;
+        private Label label2;
+        private ComboBox EdOperation;
     }
 }

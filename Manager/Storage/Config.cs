@@ -43,5 +43,6 @@ namespace Manager.Storage
     public class Step
     {
         public string Name;
+        public string Operation;
     }
 }
