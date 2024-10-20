@@ -98,7 +98,7 @@ namespace Manager
             if (e.Index == -1) return;
             var step = Steps.Items[e.Index] as Step;
 
-            DrawItemEx.Draw(e, Properties.Resources.step, step.Name, Color.Black, Color.Gold);
+            DrawItemEx.Draw(e, Properties.Resources.step, step.Name, Color.Black, Color.FromArgb(242, 242, 99));
         }
 
         private void Steps_DoubleClick(object sender, EventArgs e)
