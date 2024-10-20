@@ -68,13 +68,38 @@ namespace Manager.Utility
             {
                 LogService.Log($"Step {step.Name}", Color.Yellow);
 
-                var opDef = OperationDefList.Operations.Find(x => x.Name == step.Operation);
+                var opDef = OperationDefList.Operations.Find(x => x.Ident == step.Operation);
                 if (opDef == null) throw new Exception($"Operation '{step.Operation}' not found");
 
                 LogService.Log("Operation: " + opDef.Name, Color.Purple);
 
+                var agrs = GetArguments(step);
+
 
             }
+        }
+
+        private static Dictionary<string, string> GetArguments(Step step)
+        {
+            var args = new Dictionary<string, string>();
+
+            var lines = step.Arguments.Split(Environment.NewLine);
+            foreach (var line in lines.Select(x => x.Trim()))
+            {
+                if (line.StartsWith("//")) continue;
+
+                int i = line.IndexOf('=');
+                if (i == -1) continue;
+
+                string key = line[..i];
+                string value = line[(i + 1)..];
+
+                if (args.ContainsKey(key)) throw new Exception($"Duplicated key '{key}'");
+
+                args.Add(key, value);
+            }
+
+            return args;
         }
 
     }
