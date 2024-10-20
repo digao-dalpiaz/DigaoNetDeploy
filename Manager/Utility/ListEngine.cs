@@ -94,9 +94,4 @@ namespace Manager.Utility
         }
 
     }
-
-    public class ReturningForm<T> : Form
-    {
-        public T ReturningObj { get; set; }
-    }
 }
