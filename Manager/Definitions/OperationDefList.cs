@@ -1,4 +1,6 @@
-﻿namespace Manager.Definitions
+﻿using Manager.Utility;
+
+namespace Manager.Definitions
 {
     internal class OperationDefList
     {
@@ -26,7 +28,8 @@
                 [
                     new() { Ident = "LOCAL_FOLDER", Description = "Local folder (this machine)" },
                     new() { Ident = "REMOTE_FOLDER", Description = "Remote folder (server)" },
-                ]
+                ],
+                Action = (args) => new OperationsExec(args).CopyFolder()
             },
 
 

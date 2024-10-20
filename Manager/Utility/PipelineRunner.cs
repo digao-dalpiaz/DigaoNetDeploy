@@ -73,15 +73,15 @@ namespace Manager.Utility
 
                 LogService.Log("Operation: " + opDef.Name, Color.Purple);
 
-                var agrs = GetArguments(step);
+                var args = GetArguments(step);
 
-
+                opDef.Action(args);
             }
         }
 
-        private static Dictionary<string, string> GetArguments(Step step)
+        private static ArgumentsDictionary GetArguments(Step step)
         {
-            var args = new Dictionary<string, string>();
+            var args = new ArgumentsDictionary();
 
             var lines = step.Arguments.Split(Environment.NewLine);
             foreach (var line in lines.Select(x => x.Trim()))
