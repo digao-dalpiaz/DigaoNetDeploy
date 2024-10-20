@@ -6,7 +6,7 @@
         public string Name;
         public string Description;
         public List<OperationArgument> Arguments;
-        public Action<ArgumentsDictionary> Action;
+        public Action<OperationParams> Action;
 
         public override string ToString()
         {

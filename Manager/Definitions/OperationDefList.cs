@@ -29,7 +29,7 @@ namespace Manager.Definitions
                     new() { Ident = "LOCAL_FOLDER", Description = "Local folder (this machine)" },
                     new() { Ident = "REMOTE_FOLDER", Description = "Remote folder (server)" },
                 ],
-                Action = (args) => new OperationsExec(args).CopyFolder()
+                Action = (p) => new OperationsExec(p).CopyFolder()
             },
 
 

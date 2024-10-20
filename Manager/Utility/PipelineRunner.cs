@@ -75,7 +75,10 @@ namespace Manager.Utility
 
                 var args = GetArguments(step);
 
-                opDef.Action(args);
+                var parameters = new OperationParams();
+                parameters.Arguments = args;
+
+                opDef.Action(parameters);
             }
         }
 

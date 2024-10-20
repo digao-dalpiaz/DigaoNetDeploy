@@ -2,12 +2,12 @@
 
 namespace Manager.Utility
 {
-    internal class OperationsExec(ArgumentsDictionary _args)
+    internal class OperationsExec(OperationParams _params)
     {
 
         private string GetArg(string key)
         {
-            if (!_args.TryGetValue(key, out string value))
+            if (!_params.Arguments.TryGetValue(key, out string value))
             {
                 throw new Exception($"Argument '{key}' not found");
             }
