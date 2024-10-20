@@ -85,5 +85,33 @@ namespace Manager
             BtnEdit.PerformClick();
         }
 
+        private void MoveItem(int flag)
+        {
+            var index = List.SelectedIndex;
+            if (index == -1) return;
+
+            var newIndex = index + flag;
+            if (newIndex < 0 || newIndex > List.Items.Count-1) return;
+
+            var obj = List.Items[index] as Server;
+
+            List.Items.RemoveAt(index);
+            List.Items.Insert(newIndex, obj);
+            List.SelectedIndex = newIndex;
+
+            Vars.Config.Servers.RemoveAt(index);
+            Vars.Config.Servers.Insert(newIndex, obj);
+            ConfigLoader.Save();
+        }
+
+        private void BtnUp_Click(object sender, EventArgs e)
+        {
+            MoveItem(-1);
+        }
+
+        private void BtnDown_Click(object sender, EventArgs e)
+        {
+            MoveItem(+1);
+        }
     }
 }
