@@ -46,7 +46,7 @@
             BoxTop.Dock = DockStyle.Fill;
             BoxTop.Location = new Point(0, 0);
             BoxTop.Name = "BoxTop";
-            BoxTop.Size = new Size(700, 304);
+            BoxTop.Size = new Size(934, 304);
             BoxTop.TabIndex = 3;
             // 
             // BoxUC
@@ -54,7 +54,7 @@
             BoxUC.Dock = DockStyle.Fill;
             BoxUC.Location = new Point(107, 0);
             BoxUC.Name = "BoxUC";
-            BoxUC.Size = new Size(593, 304);
+            BoxUC.Size = new Size(827, 304);
             BoxUC.TabIndex = 2;
             // 
             // ToolBar
@@ -90,7 +90,7 @@
             SplitterBar.Dock = DockStyle.Bottom;
             SplitterBar.Location = new Point(0, 304);
             SplitterBar.Name = "SplitterBar";
-            SplitterBar.Size = new Size(700, 5);
+            SplitterBar.Size = new Size(934, 5);
             SplitterBar.TabIndex = 4;
             SplitterBar.TabStop = false;
             // 
@@ -103,7 +103,7 @@
             EdLog.Location = new Point(0, 309);
             EdLog.Name = "EdLog";
             EdLog.ReadOnly = true;
-            EdLog.Size = new Size(700, 164);
+            EdLog.Size = new Size(934, 164);
             EdLog.TabIndex = 5;
             EdLog.Text = "";
             // 
@@ -111,7 +111,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(700, 473);
+            ClientSize = new Size(934, 473);
             Controls.Add(BoxTop);
             Controls.Add(SplitterBar);
             Controls.Add(EdLog);
