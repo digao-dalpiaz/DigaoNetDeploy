@@ -1,6 +1,6 @@
 ﻿namespace Manager.Definitions
 {
-    internal class OperationsDef
+    internal class OperationDefList
     {
 
         public static List<OperationDef> Operations =
