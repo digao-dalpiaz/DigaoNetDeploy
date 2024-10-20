@@ -107,6 +107,11 @@ namespace Manager
                     server.Status = ServerStatus.DISCONNECTED;
                     LogService.Log("ERROR ON CONNECTING: " + ex.Message, Color.Crimson);
                 }
+
+                Invoke(() =>
+                {
+                    UpdConnectionButtons();
+                });
             });
         }
 
