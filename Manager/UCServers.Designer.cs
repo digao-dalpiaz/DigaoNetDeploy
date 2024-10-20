@@ -47,7 +47,7 @@
             List.Location = new Point(0, 31);
             List.Name = "List";
             List.Size = new Size(541, 420);
-            List.TabIndex = 2;
+            List.TabIndex = 1;
             List.DrawItem += List_DrawItem;
             List.DoubleClick += List_DoubleClick;
             // 
@@ -58,7 +58,7 @@
             ToolBar.Location = new Point(0, 0);
             ToolBar.Name = "ToolBar";
             ToolBar.Size = new Size(541, 31);
-            ToolBar.TabIndex = 3;
+            ToolBar.TabIndex = 0;
             // 
             // BtnAdd
             // 
