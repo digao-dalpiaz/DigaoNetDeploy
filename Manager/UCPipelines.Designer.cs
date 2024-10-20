@@ -65,6 +65,7 @@
             BtnAdd.Name = "BtnAdd";
             BtnAdd.Size = new Size(59, 28);
             BtnAdd.Text = "New";
+            BtnAdd.Click += BtnAdd_Click;
             // 
             // BtnEdit
             // 
@@ -73,6 +74,7 @@
             BtnEdit.Name = "BtnEdit";
             BtnEdit.Size = new Size(55, 28);
             BtnEdit.Text = "Edit";
+            BtnEdit.Click += BtnEdit_Click;
             // 
             // BtnDelete
             // 
@@ -81,6 +83,7 @@
             BtnDelete.Name = "BtnDelete";
             BtnDelete.Size = new Size(78, 28);
             BtnDelete.Text = "Remove";
+            BtnDelete.Click += BtnDelete_Click;
             // 
             // UCPipelines
             // 
@@ -90,6 +93,7 @@
             Controls.Add(ToolBar);
             Name = "UCPipelines";
             Size = new Size(656, 416);
+            Load += UCPipelines_Load;
             ToolBar.ResumeLayout(false);
             ToolBar.PerformLayout();
             ResumeLayout(false);
