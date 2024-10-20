@@ -27,7 +27,7 @@ namespace Manager.Utility
 
             try
             {
-                
+                ExecuteSteps();
             }
             finally
             {
@@ -59,6 +59,11 @@ namespace Manager.Utility
         private void SSH_ErrorOccurred(object sender, ExceptionEventArgs e)
         {
             LogService.Log("Server exception: " + e.Exception.Message, Color.Crimson);
+        }
+
+        private void ExecuteSteps()
+        {
+
         }
 
     }
