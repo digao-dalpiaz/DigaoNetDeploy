@@ -1,6 +1,6 @@
-using System.Reflection;
 using Manager.Storage;
 using Manager.Theme;
+using System.Reflection;
 
 namespace Manager
 {
@@ -34,7 +34,7 @@ namespace Manager
             _ucList.Add(uc);
         }
 
-        private void ShowUC<T>() where T: UserControl
+        private void ShowUC<T>() where T : UserControl
         {
             foreach (var uc in _ucList)
             {
@@ -59,6 +59,6 @@ namespace Manager
         {
             ShowUC<UCPipelines>();
         }
-        
+
     }
 }

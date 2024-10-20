@@ -38,13 +38,13 @@ namespace Manager
 
             return true;
         }
- 
+
         private void BtnOK_Click(object sender, EventArgs e)
         {
             if (!ValidateField(EdName, "Name")) return;
             if (!ValidateField(EdHost, "Host")) return;
             if (!ValidateField(EdPort, "Port")) return;
-            
+
             if (!short.TryParse(EdPort.Text, out _))
             {
                 Messages.Error("Port is invalid");
