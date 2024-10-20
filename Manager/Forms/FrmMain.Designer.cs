@@ -46,7 +46,7 @@
             BoxTop.Dock = DockStyle.Fill;
             BoxTop.Location = new Point(0, 0);
             BoxTop.Name = "BoxTop";
-            BoxTop.Size = new Size(934, 304);
+            BoxTop.Size = new Size(1036, 336);
             BoxTop.TabIndex = 3;
             // 
             // BoxUC
@@ -54,7 +54,7 @@
             BoxUC.Dock = DockStyle.Fill;
             BoxUC.Location = new Point(107, 0);
             BoxUC.Name = "BoxUC";
-            BoxUC.Size = new Size(827, 304);
+            BoxUC.Size = new Size(929, 336);
             BoxUC.TabIndex = 2;
             // 
             // ToolBar
@@ -64,7 +64,7 @@
             ToolBar.Items.AddRange(new ToolStripItem[] { BtnServers, BtnPipelines });
             ToolBar.Location = new Point(0, 0);
             ToolBar.Name = "ToolBar";
-            ToolBar.Size = new Size(107, 304);
+            ToolBar.Size = new Size(107, 336);
             ToolBar.TabIndex = 1;
             // 
             // BtnServers
@@ -88,9 +88,9 @@
             // SplitterBar
             // 
             SplitterBar.Dock = DockStyle.Bottom;
-            SplitterBar.Location = new Point(0, 304);
+            SplitterBar.Location = new Point(0, 336);
             SplitterBar.Name = "SplitterBar";
-            SplitterBar.Size = new Size(934, 5);
+            SplitterBar.Size = new Size(1036, 5);
             SplitterBar.TabIndex = 4;
             SplitterBar.TabStop = false;
             // 
@@ -100,10 +100,10 @@
             EdLog.BorderStyle = BorderStyle.None;
             EdLog.Dock = DockStyle.Bottom;
             EdLog.Font = new Font("Consolas", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            EdLog.Location = new Point(0, 309);
+            EdLog.Location = new Point(0, 341);
             EdLog.Name = "EdLog";
             EdLog.ReadOnly = true;
-            EdLog.Size = new Size(934, 164);
+            EdLog.Size = new Size(1036, 324);
             EdLog.TabIndex = 5;
             EdLog.Text = "";
             // 
@@ -111,7 +111,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(934, 473);
+            ClientSize = new Size(1036, 665);
             Controls.Add(BoxTop);
             Controls.Add(SplitterBar);
             Controls.Add(EdLog);
