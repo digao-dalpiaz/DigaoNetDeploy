@@ -1,4 +1,5 @@
 ﻿using Manager.Definitions;
+using Renci.SshNet;
 
 namespace Manager.Utility
 {
@@ -22,7 +23,27 @@ namespace Manager.Utility
             LogService.Log("Local Folder: " + from);
             LogService.Log("Remote Folder: " + to);
 
+            using (var sftp = new SftpClient(_params.Server.Host, _params.Server.Port, _params.Server.User, _params.Server.Password))
+            {
+                sftp.Connect();
 
+                if (sftp.Exists(to)) sftp.DeleteDirectory(to);
+                sftp.CreateDirectory(to);
+
+                var localFiles = Directory.GetFiles(from);
+                foreach (var file in localFiles)
+                {
+                    using (var fileStream = new FileStream(file, FileMode.Open, FileAccess.Read))
+                    {
+                        string remoteFileName = to + "/" + Path.GetFileName(file);
+
+                        LogService.Log($"Send file from '{file}' to '{remoteFileName}'");
+                        //sftp.UploadFile(fileStream, remoteFileName);
+                    }
+                }
+
+                sftp.Disconnect();
+            }
         }
 
     }

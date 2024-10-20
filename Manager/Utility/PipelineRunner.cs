@@ -77,6 +77,7 @@ namespace Manager.Utility
 
                 var parameters = new OperationParams();
                 parameters.Arguments = args;
+                parameters.Server = _server;
 
                 opDef.Action(parameters);
             }
