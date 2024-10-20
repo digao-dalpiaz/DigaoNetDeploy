@@ -7,7 +7,7 @@ namespace Manager
     public partial class FrmMain : Form
     {
 
-        private readonly UCServers _ucServers;
+        private readonly List<UserControl> _ucList = [];
 
         public FrmMain()
         {
@@ -21,10 +21,28 @@ namespace Manager
 
             BackColor = Vars.BACKGROUND;
 
-            _ucServers = new();
-            _ucServers.Visible = false;
-            _ucServers.Parent = BoxUC;
-            _ucServers.Dock = DockStyle.Fill;
+            CreateUC<UCServers>();
+            CreateUC<UCPipelines>();
+        }
+
+        private void CreateUC<T>() where T : UserControl, new()
+        {
+            var uc = new T()
+            {
+                Visible = false,
+                Parent = BoxUC,
+                Dock = DockStyle.Fill
+            };
+
+            _ucList.Add(uc);
+        }
+
+        private void ShowUC<T>() where T: UserControl
+        {
+            foreach (var uc in _ucList)
+            {
+                uc.Visible = uc is T;
+            }
         }
 
         private void FrmMain_Load(object sender, EventArgs e)
@@ -34,14 +52,13 @@ namespace Manager
 
         private void BtnServers_Click(object sender, EventArgs e)
         {
-            _ucServers.Visible = true;
+            ShowUC<UCServers>();
         }
 
         private void BtnPipelines_Click(object sender, EventArgs e)
         {
-
+            ShowUC<UCPipelines>();
         }
-
         
     }
 }
