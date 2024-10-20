@@ -1,6 +1,8 @@
 ﻿using Manager.Forms;
 using Manager.Storage;
+using Manager.Theme;
 using Manager.Utility;
+using System.Collections.Generic;
 
 namespace Manager
 {
@@ -75,7 +77,7 @@ namespace Manager
             var step = Steps.SelectedItem as Step;
             if (step == null) return;
 
-            if (MessageBox.Show($"Delete Step '{step.Name}'?", "Delete Step", 
+            if (MessageBox.Show($"Delete Step '{step.Name}'?", "Delete Step",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 Steps.Items.Remove(step);
@@ -90,6 +92,14 @@ namespace Manager
         private void BtnDown_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void Steps_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            if (e.Index == -1) return;
+            var step = Steps.Items[e.Index] as Step;
+
+            DrawItemEx.Draw(e, Properties.Resources.step, step.Name, Color.Black, Color.Gold);
         }
     }
 }

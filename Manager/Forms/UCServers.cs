@@ -56,7 +56,7 @@ namespace Manager
 
             DrawItemEx.Draw(e, server.Status == ServerStatus.CONNECTED ? 
                 Properties.Resources.linux_connected 
-                : Properties.Resources.server_blue, server.Name);
+                : Properties.Resources.server_blue, server.Name, Color.White, Vars.SELECTED);
         }
 
         private void List_DoubleClick(object sender, EventArgs e)

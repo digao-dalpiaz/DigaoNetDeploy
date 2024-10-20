@@ -79,13 +79,15 @@
             // 
             // Steps
             // 
+            Steps.DrawMode = DrawMode.OwnerDrawFixed;
             Steps.FormattingEnabled = true;
             Steps.IntegralHeight = false;
-            Steps.ItemHeight = 15;
+            Steps.ItemHeight = 48;
             Steps.Location = new Point(16, 96);
             Steps.Name = "Steps";
             Steps.Size = new Size(464, 296);
             Steps.TabIndex = 1;
+            Steps.DrawItem += Steps_DrawItem;
             // 
             // label2
             // 
