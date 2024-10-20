@@ -2,7 +2,6 @@
 using Manager.Storage;
 using Manager.Theme;
 using Manager.Utility;
-using System.Collections.Generic;
 
 namespace Manager
 {
