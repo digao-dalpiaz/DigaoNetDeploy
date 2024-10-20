@@ -135,7 +135,7 @@ namespace Manager
         {
             if (_modified)
             {
-                if (MessageBox.Show("Discard the changes?", "Discard Changes", 
+                if (MessageBox.Show("Steps have been modified. Discard the changes?", "Discard Changes", 
                     MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
                 {
                     e.Cancel = true;
