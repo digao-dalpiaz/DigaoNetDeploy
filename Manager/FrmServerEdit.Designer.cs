@@ -48,7 +48,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(14, 22);
+            label1.Location = new Point(14, 14);
             label1.Name = "label1";
             label1.Size = new Size(39, 15);
             label1.TabIndex = 0;
@@ -56,22 +56,22 @@
             // 
             // EdName
             // 
-            EdName.Location = new Point(16, 40);
+            EdName.Location = new Point(16, 32);
             EdName.Name = "EdName";
             EdName.Size = new Size(400, 23);
-            EdName.TabIndex = 1;
+            EdName.TabIndex = 0;
             // 
             // EdHost
             // 
-            EdHost.Location = new Point(16, 96);
+            EdHost.Location = new Point(16, 88);
             EdHost.Name = "EdHost";
             EdHost.Size = new Size(528, 23);
-            EdHost.TabIndex = 3;
+            EdHost.TabIndex = 1;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(14, 78);
+            label2.Location = new Point(14, 70);
             label2.Name = "label2";
             label2.Size = new Size(32, 15);
             label2.TabIndex = 2;
@@ -79,15 +79,15 @@
             // 
             // EdPort
             // 
-            EdPort.Location = new Point(552, 96);
+            EdPort.Location = new Point(552, 88);
             EdPort.Name = "EdPort";
             EdPort.Size = new Size(80, 23);
-            EdPort.TabIndex = 5;
+            EdPort.TabIndex = 2;
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(550, 78);
+            label3.Location = new Point(550, 70);
             label3.Name = "label3";
             label3.Size = new Size(29, 15);
             label3.TabIndex = 4;
@@ -95,10 +95,10 @@
             // 
             // BtnOK
             // 
-            BtnOK.Location = new Point(224, 352);
+            BtnOK.Location = new Point(224, 296);
             BtnOK.Name = "BtnOK";
             BtnOK.Size = new Size(96, 32);
-            BtnOK.TabIndex = 6;
+            BtnOK.TabIndex = 7;
             BtnOK.Text = "OK";
             BtnOK.UseVisualStyleBackColor = true;
             BtnOK.Click += BtnOK_Click;
@@ -106,24 +106,24 @@
             // BtnCancel
             // 
             BtnCancel.DialogResult = DialogResult.Cancel;
-            BtnCancel.Location = new Point(328, 352);
+            BtnCancel.Location = new Point(328, 296);
             BtnCancel.Name = "BtnCancel";
             BtnCancel.Size = new Size(104, 32);
-            BtnCancel.TabIndex = 7;
+            BtnCancel.TabIndex = 8;
             BtnCancel.Text = "Cancel";
             BtnCancel.UseVisualStyleBackColor = true;
             // 
             // EdUser
             // 
-            EdUser.Location = new Point(16, 152);
+            EdUser.Location = new Point(16, 144);
             EdUser.Name = "EdUser";
             EdUser.Size = new Size(400, 23);
-            EdUser.TabIndex = 9;
+            EdUser.TabIndex = 3;
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(14, 134);
+            label4.Location = new Point(14, 126);
             label4.Name = "label4";
             label4.Size = new Size(30, 15);
             label4.TabIndex = 8;
@@ -131,15 +131,15 @@
             // 
             // EdPassword
             // 
-            EdPassword.Location = new Point(16, 208);
+            EdPassword.Location = new Point(16, 200);
             EdPassword.Name = "EdPassword";
             EdPassword.Size = new Size(400, 23);
-            EdPassword.TabIndex = 11;
+            EdPassword.TabIndex = 4;
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(14, 190);
+            label5.Location = new Point(14, 182);
             label5.Name = "label5";
             label5.Size = new Size(57, 15);
             label5.TabIndex = 10;
@@ -148,7 +148,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(14, 246);
+            label6.Location = new Point(14, 238);
             label6.Name = "label6";
             label6.Size = new Size(83, 15);
             label6.TabIndex = 12;
@@ -156,17 +156,18 @@
             // 
             // EdKeyFile
             // 
-            EdKeyFile.Location = new Point(16, 264);
+            EdKeyFile.Location = new Point(16, 256);
             EdKeyFile.Name = "EdKeyFile";
-            EdKeyFile.Size = new Size(568, 23);
-            EdKeyFile.TabIndex = 13;
+            EdKeyFile.Size = new Size(576, 23);
+            EdKeyFile.TabIndex = 5;
             // 
             // BtnFindKeyFile
             // 
-            BtnFindKeyFile.Location = new Point(592, 264);
+            BtnFindKeyFile.Location = new Point(592, 256);
             BtnFindKeyFile.Name = "BtnFindKeyFile";
             BtnFindKeyFile.Size = new Size(40, 24);
-            BtnFindKeyFile.TabIndex = 14;
+            BtnFindKeyFile.TabIndex = 6;
+            BtnFindKeyFile.TabStop = false;
             BtnFindKeyFile.Text = "...";
             BtnFindKeyFile.UseVisualStyleBackColor = true;
             // 
@@ -176,7 +177,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             CancelButton = BtnCancel;
-            ClientSize = new Size(649, 395);
+            ClientSize = new Size(649, 340);
             Controls.Add(BtnFindKeyFile);
             Controls.Add(EdKeyFile);
             Controls.Add(label6);
@@ -192,7 +193,7 @@
             Controls.Add(label2);
             Controls.Add(EdName);
             Controls.Add(label1);
-            FormBorderStyle = FormBorderStyle.FixedSingle;
+            FormBorderStyle = FormBorderStyle.FixedDialog;
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "FrmServerEdit";

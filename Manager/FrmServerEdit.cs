@@ -25,8 +25,35 @@
             }
         }
 
+        private bool ValidateField(TextBox ed, string fieldName)
+        {
+            ed.Text = ed.Text.Trim();
+            if (ed.Text == string.Empty)
+            {
+                Messages.Error($"{fieldName} is empty");
+                ed.Focus();
+                return false;
+            }
+
+            return true;
+        }
+ 
         private void BtnOK_Click(object sender, EventArgs e)
         {
+            if (!ValidateField(EdName, "Name")) return;
+            if (!ValidateField(EdHost, "Host")) return;
+            if (!ValidateField(EdPort, "Port")) return;
+            
+            if (!short.TryParse(EdPort.Text, out _))
+            {
+                Messages.Error("Port is invalid");
+                return;
+            }
+
+            if (!ValidateField(EdUser, "User")) return;
+
+            //
+
             if (Server == null)
             {
                 Server = new();
