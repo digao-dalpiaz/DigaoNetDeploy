@@ -37,6 +37,8 @@
             BtnNew = new Button();
             BtnEdit = new Button();
             BtnRemove = new Button();
+            BtnUp = new Button();
+            BtnDown = new Button();
             SuspendLayout();
             // 
             // BtnCancel
@@ -45,7 +47,7 @@
             BtnCancel.Location = new Point(320, 408);
             BtnCancel.Name = "BtnCancel";
             BtnCancel.Size = new Size(104, 32);
-            BtnCancel.TabIndex = 6;
+            BtnCancel.TabIndex = 8;
             BtnCancel.Text = "Cancel";
             BtnCancel.UseVisualStyleBackColor = true;
             // 
@@ -54,7 +56,7 @@
             BtnOK.Location = new Point(216, 408);
             BtnOK.Name = "BtnOK";
             BtnOK.Size = new Size(96, 32);
-            BtnOK.TabIndex = 5;
+            BtnOK.TabIndex = 7;
             BtnOK.Text = "OK";
             BtnOK.UseVisualStyleBackColor = true;
             BtnOK.Click += BtnOK_Click;
@@ -121,6 +123,24 @@
             BtnRemove.Text = "Remove";
             BtnRemove.UseVisualStyleBackColor = true;
             // 
+            // BtnUp
+            // 
+            BtnUp.Location = new Point(488, 240);
+            BtnUp.Name = "BtnUp";
+            BtnUp.Size = new Size(128, 32);
+            BtnUp.TabIndex = 5;
+            BtnUp.Text = "Move Up";
+            BtnUp.UseVisualStyleBackColor = true;
+            // 
+            // BtnDown
+            // 
+            BtnDown.Location = new Point(488, 280);
+            BtnDown.Name = "BtnDown";
+            BtnDown.Size = new Size(128, 32);
+            BtnDown.TabIndex = 6;
+            BtnDown.Text = "Move Down";
+            BtnDown.UseVisualStyleBackColor = true;
+            // 
             // FrmPipeline
             // 
             AcceptButton = BtnOK;
@@ -128,6 +148,8 @@
             AutoScaleMode = AutoScaleMode.Font;
             CancelButton = BtnCancel;
             ClientSize = new Size(633, 450);
+            Controls.Add(BtnDown);
+            Controls.Add(BtnUp);
             Controls.Add(BtnRemove);
             Controls.Add(BtnEdit);
             Controls.Add(BtnNew);
@@ -160,5 +182,7 @@
         private Button BtnNew;
         private Button BtnEdit;
         private Button BtnRemove;
+        private Button BtnUp;
+        private Button BtnDown;
     }
 }
