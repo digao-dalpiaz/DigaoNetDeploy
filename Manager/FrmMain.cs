@@ -1,4 +1,5 @@
 using System.Reflection;
+using Manager.Theme;
 
 namespace Manager
 {
@@ -15,7 +16,7 @@ namespace Manager
 
             DarkTitle.UseImmersiveDarkMode(this.Handle);
 
-            ToolStripRenderer.ConfigToolStrip(ToolBar);
+            MyToolStripRenderer.ConfigToolStrip(ToolBar);
 
             BackColor = Vars.BACKGROUND;
 

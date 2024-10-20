@@ -1,4 +1,6 @@
-﻿namespace Manager
+﻿using Manager.Theme;
+
+namespace Manager
 {
     public partial class UCServers : UserControl
     {
@@ -6,7 +8,7 @@
         {
             InitializeComponent();
 
-            ToolStripRenderer.ConfigToolStrip(ToolBar);
+            MyToolStripRenderer.ConfigToolStrip(ToolBar);
 
             List.BackColor = Vars.BACKGROUND;
         }

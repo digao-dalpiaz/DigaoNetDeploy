@@ -1,6 +1,6 @@
-﻿namespace Manager
+﻿namespace Manager.Theme
 {
-    internal class ToolStripRenderer : ToolStripSystemRenderer
+    internal class MyToolStripRenderer : ToolStripSystemRenderer
     {
         public static void ConfigToolStrip(ToolStrip toolStrip)
         {
@@ -15,7 +15,7 @@
                 item.Padding = new Padding(4);
             }
 
-            toolStrip.Renderer = new ToolStripRenderer();
+            toolStrip.Renderer = new MyToolStripRenderer();
         }
 
         protected override void OnRenderToolStripBorder(ToolStripRenderEventArgs e)
