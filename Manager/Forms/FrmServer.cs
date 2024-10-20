@@ -3,8 +3,10 @@ using Manager.Utility;
 
 namespace Manager
 {
-    public partial class FrmServer : ReturningForm<Server>
+    public partial class FrmServer : Form
     {
+
+        public Server ReturningObj { get; set; }
 
         public FrmServer()
         {
@@ -26,24 +28,11 @@ namespace Manager
             }
         }
 
-        private static bool ValidateField(TextBox ed, string fieldName)
-        {
-            ed.Text = ed.Text.Trim();
-            if (ed.Text == string.Empty)
-            {
-                Messages.Error($"{fieldName} is empty");
-                ed.Focus();
-                return false;
-            }
-
-            return true;
-        }
-
         private void BtnOK_Click(object sender, EventArgs e)
         {
-            if (!ValidateField(EdName, "Name")) return;
-            if (!ValidateField(EdHost, "Host")) return;
-            if (!ValidateField(EdPort, "Port")) return;
+            if (!Messages.ValidateField(EdName, "Name")) return;
+            if (!Messages.ValidateField(EdHost, "Host")) return;
+            if (!Messages.ValidateField(EdPort, "Port")) return;
 
             if (!short.TryParse(EdPort.Text, out _))
             {
@@ -51,7 +40,7 @@ namespace Manager
                 return;
             }
 
-            if (!ValidateField(EdUser, "User")) return;
+            if (!Messages.ValidateField(EdUser, "User")) return;
 
             //
 

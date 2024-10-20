@@ -1,8 +1,9 @@
 ﻿using Manager.Storage;
+using System.Reflection;
 
 namespace Manager.Utility
 {
-    internal class ListEngine<T, TForm>(List<T> _storageList, ListBox _listBox, string _ident) where TForm : ReturningForm<T>, new() where T : NamedClass
+    public class ListEngine<T, TForm>(List<T> _storageList, ListBox _listBox, string _ident) where TForm : Form, new() where T : NamedClass
     {
 
         public void FillList()
@@ -13,12 +14,17 @@ namespace Manager.Utility
             }
         }
 
+        private PropertyInfo GetReturningObjProp()
+        {
+            return typeof(TForm).GetProperty("ReturningObj");
+        }
+
         public void Add()
         {
             var f = new TForm();
             if (f.ShowDialog() == DialogResult.OK)
             {
-                var obj = f.ReturningObj;
+                var obj = (T)GetReturningObjProp().GetValue(f);
 
                 _storageList.Add(obj);
                 _listBox.Items.Add(obj);
@@ -34,7 +40,7 @@ namespace Manager.Utility
             if (obj == null) return;
 
             var f = new TForm();
-            f.ReturningObj = obj;
+            GetReturningObjProp().SetValue(f, obj);
             if (f.ShowDialog() == DialogResult.OK)
             {
                 _listBox.Invalidate();

@@ -1,12 +1,11 @@
 ﻿using Manager.Storage;
-using Manager.Utility;
 
 namespace Manager
 {
-    public partial class FrmPipeline : ReturningForm<Pipeline>
+    public partial class FrmPipeline : Form
     {
 
-        public Pipeline Pipeline;
+        public Pipeline ReturningObj;
 
         public FrmPipeline()
         {
