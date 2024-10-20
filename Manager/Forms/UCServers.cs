@@ -23,11 +23,13 @@ namespace Manager
         private void UCServers_Load(object sender, EventArgs e)
         {
             _listEngine.Init();
+            UpdConnectionButtons();
         }
 
         private void List_SelectedIndexChanged(object sender, EventArgs e)
         {
             _listEngine.UpdateButtons();
+            UpdConnectionButtons();
         }
 
         private void BtnAdd_Click(object sender, EventArgs e)
@@ -66,6 +68,12 @@ namespace Manager
         private void BtnDown_Click(object sender, EventArgs e)
         {
             _listEngine.MoveDown();
+        }
+
+        private void UpdConnectionButtons()
+        {
+            BtnConnect.Enabled = List.SelectedIndex != -1;
+            BtnDisconnect.Enabled = false;
         }
         
     }
