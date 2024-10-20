@@ -74,10 +74,13 @@ namespace Manager
 
         private void UpdConnectionButtons()
         {
-            var server = List.SelectedItem as Server;
+            Invoke(() =>
+            {
+                var server = List.SelectedItem as Server;
 
-            BtnConnect.Enabled = server?.Status == ServerStatus.DISCONNECTED;
-            BtnDisconnect.Enabled = server?.Status == ServerStatus.CONNECTED;
+                BtnConnect.Enabled = server?.Status == ServerStatus.DISCONNECTED;
+                BtnDisconnect.Enabled = server?.Status == ServerStatus.CONNECTED;
+            });
         }
 
         private void BtnConnect_Click(object sender, EventArgs e)
@@ -108,10 +111,7 @@ namespace Manager
                     LogServer(server, "ERROR ON CONNECTING: " + ex.Message, Color.Crimson);
                 }
 
-                Invoke(() =>
-                {
-                    UpdConnectionButtons();
-                });
+                UpdConnectionButtons();
             });
         }
 
@@ -137,6 +137,7 @@ namespace Manager
             var server = GetServerFromTunnel((SshClient)sender);
 
             LogServer(server, $"ERROR: {e.Exception.Message}", Color.Crimson);
+            SetDisconnected(server);
         }
 
         private void BtnDisconnect_Click(object sender, EventArgs e)
@@ -145,8 +146,13 @@ namespace Manager
 
             LogServer(server, "Disconnecting...");
             server.Tunnel.Disconnect();
-            LogServer(server, "Disconnected.");
 
+            SetDisconnected(server);
+        }
+
+        private void SetDisconnected(Server server)
+        {
+            LogServer(server, "Disconnected.");
             server.Status = ServerStatus.DISCONNECTED;
             UpdConnectionButtons();
         }
