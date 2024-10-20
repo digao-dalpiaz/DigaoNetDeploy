@@ -119,6 +119,7 @@
             Name = "FrmMain";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Digao Net Deploy";
+            FormClosing += FrmMain_FormClosing;
             Load += FrmMain_Load;
             BoxTop.ResumeLayout(false);
             BoxTop.PerformLayout();

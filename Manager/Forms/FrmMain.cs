@@ -63,5 +63,25 @@ namespace Manager
             ShowUC<UCPipelines>();
         }
 
+        private void FrmMain_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            e.Cancel = true;
+
+            //verificar primeiro se existe pipeline em andamento...
+
+            if (Vars.Config.Servers.Any(x => x.Status == ServerStatus.CONNECTING)) 
+            {
+                Messages.Error("There are servers currently connecting");
+                return;
+            }
+
+            /*var connectedServers = Vars.Config.Servers.Where(x => x.Status == ServerStatus.CONNECTED);
+            foreach (var server in connectedServers)
+            {
+                server.Disconnect();
+            }*/
+
+            e.Cancel = false;
+        }
     }
 }
