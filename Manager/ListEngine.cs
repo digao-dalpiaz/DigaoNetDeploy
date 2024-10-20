@@ -2,11 +2,6 @@
 
 namespace Manager
 {
-    public class ReturningForm<T> : Form 
-    {
-        public T ReturningObj;
-    }
-
     internal class ListEngine<T, TForm>(List<T> _storageList, ListBox _listBox, string _ident) where TForm : ReturningForm<T>, new() where T : NamedClass
     {
 
@@ -92,5 +87,10 @@ namespace Manager
             MoveItem(+1);
         }
 
+    }
+
+    public class ReturningForm<T> : Form
+    {
+        public T ReturningObj { get; set; }
     }
 }
