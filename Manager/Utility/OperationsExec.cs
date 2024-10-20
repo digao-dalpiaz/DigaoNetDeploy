@@ -31,10 +31,19 @@ namespace Manager.Utility
 
                 if (sftp.Exists(to))
                 {
-                    LogService.Log($"Deleting existing directory '{to}'...");
-                    sftp.DeleteDirectory(to);
+                    var remoteFiles = sftp.ListDirectory(to);
+                    foreach (var file in remoteFiles)
+                    {
+                        if (file.Name == "." || file.Name == "..") continue;
+
+                        LogService.Log($"Deleting existing file '{file.FullName}'...");
+                        sftp.DeleteFile(file.FullName);
+                    }
                 }
-                sftp.CreateDirectory(to);
+                else
+                {
+                    sftp.CreateDirectory(to);
+                }
 
                 var localFiles = Directory.GetFiles(from);
                 foreach (var file in localFiles)
