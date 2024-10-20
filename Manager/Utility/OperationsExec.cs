@@ -23,7 +23,9 @@ namespace Manager.Utility
             LogService.Log("Local Folder: " + from);
             LogService.Log("Remote Folder: " + to);
 
-            using (var sftp = new SftpClient(_params.Server.Host, _params.Server.Port, _params.Server.User, _params.Server.Password))
+            var keyFile = new PrivateKeyFile(_params.Server.KeyFile);
+            
+            using (var sftp = new SftpClient(_params.Server.Host, _params.Server.Port, _params.Server.User, keyFile))
             {
                 sftp.Connect();
 

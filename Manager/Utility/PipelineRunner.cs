@@ -47,7 +47,9 @@ namespace Manager.Utility
 
         private void CreateSSH()
         {
-            _ssh = new SshClient(_server.Host, _server.Port, _server.User, _server.Password);
+            var keyFile = new PrivateKeyFile(_server.KeyFile);
+
+            _ssh = new SshClient(_server.Host, _server.Port, _server.User, keyFile);
             _ssh.ErrorOccurred += SSH_ErrorOccurred;
             _ssh.ServerIdentificationReceived += SSH_ServerIdentificationReceived;
         }
