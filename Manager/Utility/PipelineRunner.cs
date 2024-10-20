@@ -63,7 +63,10 @@ namespace Manager.Utility
 
         private void ExecuteSteps()
         {
-
+            foreach (var step in _pipeline.Steps)
+            {
+                LogService.Log($"Step {step.Name}", Color.Yellow);
+            }
         }
 
     }
