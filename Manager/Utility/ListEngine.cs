@@ -14,7 +14,7 @@ namespace Manager.Utility
             }
         }
 
-        private PropertyInfo GetReturningObjProp()
+        private static PropertyInfo GetReturningObjProp()
         {
             return typeof(TForm).GetProperty("ReturningObj");
         }
