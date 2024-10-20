@@ -54,9 +54,7 @@ namespace Manager.Utility
 
         private void CreateSSH()
         {
-            var keyFile = new PrivateKeyFile(_server.KeyFile);
-
-            _ssh = new SshClient(_server.Host, _server.Port, _server.User, keyFile);
+            _ssh = new SshClient(_server.Host, _server.Port, _server.User, new PrivateKeyFile(_server.KeyFile));
             _ssh.ErrorOccurred += SSH_ErrorOccurred;
             _ssh.ServerIdentificationReceived += SSH_ServerIdentificationReceived;
         }
@@ -120,9 +118,7 @@ namespace Manager.Utility
         {
             if (_sftp == null)
             {
-                var keyFile = new PrivateKeyFile(_server.KeyFile);
-
-                _sftp = new SftpClient(_server.Host, _server.Port, _server.User, keyFile);
+                _sftp = new SftpClient(_server.Host, _server.Port, _server.User, new PrivateKeyFile(_server.KeyFile));
                 LogService.Log("Connecting to SFTP service...");
                 _sftp.Connect();
                 LogService.Log("Connected!");
