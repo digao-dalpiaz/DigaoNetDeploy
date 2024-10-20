@@ -54,8 +54,8 @@ namespace Manager
             if (e.Index == -1) return;
             var server = List.Items[e.Index] as Server;
 
-            DrawItemEx.Draw(e, server.Status == ServerStatus.CONNECTED ? 
-                Properties.Resources.linux_connected 
+            DrawItemEx.Draw(e, server.Status == ServerStatus.CONNECTED ?
+                Properties.Resources.linux_connected
                 : Properties.Resources.server_blue, server.Name, Color.White, Vars.SELECTED);
         }
 

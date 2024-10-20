@@ -68,6 +68,6 @@ namespace Manager
             _listEngine.MoveDown();
         }
 
-        
+
     }
 }

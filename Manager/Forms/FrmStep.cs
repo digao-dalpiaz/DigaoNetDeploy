@@ -39,6 +39,6 @@ namespace Manager.Forms
             DialogResult = DialogResult.OK;
         }
 
-        
+
     }
 }
