@@ -38,27 +38,25 @@
             // 
             // List
             // 
+            List.BorderStyle = BorderStyle.None;
             List.Dock = DockStyle.Fill;
             List.DrawMode = DrawMode.OwnerDrawFixed;
             List.FormattingEnabled = true;
             List.IntegralHeight = false;
             List.ItemHeight = 48;
-            List.Location = new Point(0, 47);
+            List.Location = new Point(0, 31);
             List.Name = "List";
-            List.Size = new Size(541, 404);
+            List.Size = new Size(541, 420);
             List.TabIndex = 2;
             List.DrawItem += List_DrawItem;
             // 
             // ToolBar
             // 
-            ToolBar.GripStyle = ToolStripGripStyle.Hidden;
             ToolBar.ImageScalingSize = new Size(24, 24);
             ToolBar.Items.AddRange(new ToolStripItem[] { BtnAdd, BtnEdit, BtnDelete });
             ToolBar.Location = new Point(0, 0);
             ToolBar.Name = "ToolBar";
-            ToolBar.Padding = new Padding(4);
-            ToolBar.ShowItemToolTips = false;
-            ToolBar.Size = new Size(541, 47);
+            ToolBar.Size = new Size(541, 31);
             ToolBar.TabIndex = 3;
             // 
             // BtnAdd
@@ -66,8 +64,7 @@
             BtnAdd.Image = Properties.Resources.add;
             BtnAdd.ImageTransparentColor = Color.Magenta;
             BtnAdd.Name = "BtnAdd";
-            BtnAdd.Padding = new Padding(4);
-            BtnAdd.Size = new Size(67, 36);
+            BtnAdd.Size = new Size(59, 28);
             BtnAdd.Text = "New";
             BtnAdd.Click += BtnAdd_Click;
             // 
@@ -76,8 +73,7 @@
             BtnEdit.Image = Properties.Resources.edit;
             BtnEdit.ImageTransparentColor = Color.Magenta;
             BtnEdit.Name = "BtnEdit";
-            BtnEdit.Padding = new Padding(4);
-            BtnEdit.Size = new Size(63, 36);
+            BtnEdit.Size = new Size(55, 28);
             BtnEdit.Text = "Edit";
             BtnEdit.Click += BtnEdit_Click;
             // 
@@ -86,8 +82,7 @@
             BtnDelete.Image = Properties.Resources.delete;
             BtnDelete.ImageTransparentColor = Color.Magenta;
             BtnDelete.Name = "BtnDelete";
-            BtnDelete.Padding = new Padding(4);
-            BtnDelete.Size = new Size(86, 36);
+            BtnDelete.Size = new Size(78, 28);
             BtnDelete.Text = "Remove";
             BtnDelete.Click += BtnDelete_Click;
             // 

@@ -93,9 +93,9 @@ namespace Manager.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap pipeline {
+        internal static System.Drawing.Bitmap pipeline_blue {
             get {
-                object obj = ResourceManager.GetObject("pipeline", resourceCulture);
+                object obj = ResourceManager.GetObject("pipeline_blue", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -103,9 +103,29 @@ namespace Manager.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap server {
+        internal static System.Drawing.Bitmap pipeline_orange {
             get {
-                object obj = ResourceManager.GetObject("server", resourceCulture);
+                object obj = ResourceManager.GetObject("pipeline_orange", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap server_blue {
+            get {
+                object obj = ResourceManager.GetObject("server_blue", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap server_orange {
+            get {
+                object obj = ResourceManager.GetObject("server_orange", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

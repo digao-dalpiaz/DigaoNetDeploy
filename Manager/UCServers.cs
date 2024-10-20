@@ -5,6 +5,10 @@
         public UCServers()
         {
             InitializeComponent();
+
+            ToolStripRenderer.ConfigToolStrip(ToolBar);
+
+            List.BackColor = Color.FromArgb(30, 30, 30);
         }
 
         private void UCServers_Load(object sender, EventArgs e)
@@ -72,15 +76,15 @@
             e.DrawBackground();
             if (e.State.HasFlag(DrawItemState.Selected))
             {
-                e.Graphics.FillRectangle(Brushes.LightBlue, e.Bounds);
+                e.Graphics.FillRectangle(Brushes.DarkGoldenrod, e.Bounds);
             }
 
             const int imgSize = 32;
             
-            e.Graphics.DrawImage(Properties.Resources.server, e.Bounds.X + 4, e.Bounds.Y + ((e.Bounds.Height - imgSize) / 2), imgSize, imgSize);
+            e.Graphics.DrawImage(Properties.Resources.server_blue, e.Bounds.X + 4, e.Bounds.Y + ((e.Bounds.Height - imgSize) / 2), imgSize, imgSize);
 
             var textSize = e.Graphics.MeasureString("A", e.Font);
-            e.Graphics.DrawString(server.Name, e.Font, Brushes.Black, e.Bounds.X + imgSize + 12, e.Bounds.Y + ((e.Bounds.Height - textSize.Height) / 2));
+            e.Graphics.DrawString(server.Name, e.Font, Brushes.White, e.Bounds.X + imgSize + 12, e.Bounds.Y + ((e.Bounds.Height - textSize.Height) / 2));
             e.DrawFocusRectangle();
         }
     }

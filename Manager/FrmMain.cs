@@ -1,3 +1,5 @@
+using System.Reflection;
+
 namespace Manager
 {
     public partial class FrmMain : Form
@@ -8,6 +10,11 @@ namespace Manager
         public FrmMain()
         {
             InitializeComponent();
+
+            this.Icon = Icon.ExtractAssociatedIcon(Assembly.GetExecutingAssembly().Location);
+
+            ToolStripRenderer.ConfigToolStrip(ToolBar);
+            
 
             _ucServers = new();
             _ucServers.Visible = false;

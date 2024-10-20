@@ -38,17 +38,16 @@
             // ToolBar
             // 
             ToolBar.Dock = DockStyle.Left;
-            ToolBar.ImageScalingSize = new Size(32, 32);
+            ToolBar.ImageScalingSize = new Size(48, 48);
             ToolBar.Items.AddRange(new ToolStripItem[] { BtnServers, BtnPipelines });
             ToolBar.Location = new Point(0, 0);
             ToolBar.Name = "ToolBar";
             ToolBar.Size = new Size(91, 473);
             ToolBar.TabIndex = 0;
-            ToolBar.Text = "toolStrip1";
             // 
             // BtnServers
             // 
-            BtnServers.Image = Properties.Resources.server;
+            BtnServers.Image = Properties.Resources.server_orange;
             BtnServers.ImageTransparentColor = Color.Magenta;
             BtnServers.Name = "BtnServers";
             BtnServers.Size = new Size(88, 36);
@@ -57,7 +56,7 @@
             // 
             // BtnPipelines
             // 
-            BtnPipelines.Image = Properties.Resources.pipeline;
+            BtnPipelines.Image = Properties.Resources.pipeline_orange;
             BtnPipelines.ImageTransparentColor = Color.Magenta;
             BtnPipelines.Name = "BtnPipelines";
             BtnPipelines.Size = new Size(88, 36);
