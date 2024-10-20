@@ -68,6 +68,15 @@ namespace Manager
             _listEngine.MoveDown();
         }
 
+        private void BtnRun_Click(object sender, EventArgs e)
+        {
+            if (Vars.PipelineRunning)
+            {
+                Messages.Error("There is already a pipeline running");
+                return;
+            }
 
+
+        }
     }
 }

@@ -116,6 +116,7 @@
             BtnRun.Name = "BtnRun";
             BtnRun.Size = new Size(56, 28);
             BtnRun.Text = "Run";
+            BtnRun.Click += BtnRun_Click;
             // 
             // UCPipelines
             // 

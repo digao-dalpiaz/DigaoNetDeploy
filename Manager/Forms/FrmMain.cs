@@ -65,7 +65,11 @@ namespace Manager
 
         private void FrmMain_FormClosing(object sender, FormClosingEventArgs e)
         {
-            //verificar se existe pipeline em andamento...
+            if (Vars.PipelineRunning)
+            {
+                Messages.Error("There is a pipeline running");
+                e.Cancel = true;
+            }
         }
     }
 }
