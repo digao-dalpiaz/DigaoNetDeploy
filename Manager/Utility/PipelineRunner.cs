@@ -1,4 +1,5 @@
-﻿using Manager.Storage;
+﻿using Manager.Definitions;
+using Manager.Storage;
 using Renci.SshNet;
 using Renci.SshNet.Common;
 
@@ -66,6 +67,13 @@ namespace Manager.Utility
             foreach (var step in _pipeline.Steps)
             {
                 LogService.Log($"Step {step.Name}", Color.Yellow);
+
+                var opDef = OperationDefList.Operations.Find(x => x.Name == step.Operation);
+                if (opDef == null) throw new Exception($"Operation '{step.Operation}' not found");
+
+                LogService.Log("Operation: " + opDef.Name, Color.Purple);
+
+
             }
         }
 
