@@ -104,9 +104,11 @@
             OpArgsList.Name = "OpArgsList";
             OpArgsList.Size = new Size(760, 96);
             OpArgsList.TabIndex = 13;
+            OpArgsList.DoubleClick += OpArgsList_DoubleClick;
             // 
             // EdArgs
             // 
+            EdArgs.AcceptsReturn = true;
             EdArgs.Font = new Font("Consolas", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             EdArgs.Location = new Point(16, 264);
             EdArgs.Multiline = true;

@@ -74,5 +74,14 @@ namespace Manager.Forms
                 OpArgsList.Items.Add(arg);
             }
         }
+
+        private void OpArgsList_DoubleClick(object sender, EventArgs e)
+        {
+            var arg = OpArgsList.SelectedItem as OperationArgument;
+            if (arg == null) return;
+
+            EdArgs.SelectedText = arg.Ident + "=";
+        }
+
     }
 }
