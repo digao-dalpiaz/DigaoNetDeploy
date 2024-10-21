@@ -98,13 +98,13 @@ namespace Manager
             {
                 try
                 {
-                    new PipelineRunner(pipeline).Run(); 
+                    new PipelineRunner(pipeline).Run();
                 }
                 catch (Exception ex)
                 {
                     LogService.Log("### FATAL ERROR: " + ex.Message, Color.Crimson);
                 }
-                
+
                 Invoke(() =>
                 {
                     Vars.PipelineRunning = false;
