@@ -79,10 +79,15 @@ namespace Manager.Utility
             LogService.Log("Files to upload: " + localFiles.Length);
             foreach (var file in localFiles)
             {
+                string remoteFileName = to + "/" + Path.GetFileName(file);
+
+                if (!overwriteExistingFiles && sftp.Exists(remoteFileName))
+                {
+                    throw new Exception("File already exists on server: " + remoteFileName);
+                }
+
                 using (var fileStream = new FileStream(file, FileMode.Open, FileAccess.Read))
                 {
-                    string remoteFileName = to + "/" + Path.GetFileName(file);
-
                     LogService.Log($"Send file from '{file}' to '{remoteFileName}'");
                     sftp.UploadFile(fileStream, remoteFileName, overwriteExistingFiles);
                 }
