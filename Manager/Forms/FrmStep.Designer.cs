@@ -45,7 +45,7 @@
             EdName.Location = new Point(16, 32);
             EdName.Name = "EdName";
             EdName.Size = new Size(400, 23);
-            EdName.TabIndex = 1;
+            EdName.TabIndex = 0;
             // 
             // label1
             // 
@@ -62,7 +62,7 @@
             BtnCancel.Location = new Point(400, 432);
             BtnCancel.Name = "BtnCancel";
             BtnCancel.Size = new Size(104, 32);
-            BtnCancel.TabIndex = 10;
+            BtnCancel.TabIndex = 5;
             BtnCancel.Text = "Cancel";
             BtnCancel.UseVisualStyleBackColor = true;
             // 
@@ -71,7 +71,7 @@
             BtnOK.Location = new Point(296, 432);
             BtnOK.Name = "BtnOK";
             BtnOK.Size = new Size(96, 32);
-            BtnOK.TabIndex = 9;
+            BtnOK.TabIndex = 4;
             BtnOK.Text = "OK";
             BtnOK.UseVisualStyleBackColor = true;
             BtnOK.Click += BtnOK_Click;
@@ -92,7 +92,7 @@
             EdOperation.Location = new Point(16, 88);
             EdOperation.Name = "EdOperation";
             EdOperation.Size = new Size(400, 23);
-            EdOperation.TabIndex = 12;
+            EdOperation.TabIndex = 1;
             EdOperation.SelectedIndexChanged += EdOperation_SelectedIndexChanged;
             // 
             // OpArgsList
@@ -103,7 +103,7 @@
             OpArgsList.Location = new Point(16, 144);
             OpArgsList.Name = "OpArgsList";
             OpArgsList.Size = new Size(760, 96);
-            OpArgsList.TabIndex = 13;
+            OpArgsList.TabIndex = 2;
             OpArgsList.DoubleClick += OpArgsList_DoubleClick;
             // 
             // EdArgs
@@ -115,7 +115,7 @@
             EdArgs.Name = "EdArgs";
             EdArgs.ScrollBars = ScrollBars.Both;
             EdArgs.Size = new Size(760, 160);
-            EdArgs.TabIndex = 14;
+            EdArgs.TabIndex = 3;
             EdArgs.WordWrap = false;
             // 
             // label3
