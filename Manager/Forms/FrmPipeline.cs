@@ -39,6 +39,8 @@ namespace Manager
                 var server = Vars.Config.Servers.Find(x => x.Id == ReturningObj.ServerId);
                 if (server != null) EdServer.SelectedItem = server;
             }
+
+            UpdStepsButtons();
         }
 
         private void BtnOK_Click(object sender, EventArgs e)
@@ -75,12 +77,14 @@ namespace Manager
 
         private void UpdStepsButtons()
         {
-            bool sel = Steps.SelectedIndex != -1;
+            var index = Steps.SelectedIndex;
+            bool sel = index != -1;
 
             BtnEdit.Enabled = sel;
             BtnRemove.Enabled = sel;
 
-            //BtnUp.Enabled = 
+            BtnUp.Enabled = sel && index > 0;
+            BtnDown.Enabled = sel && index < Steps.Items.Count-1;
         }
 
         private void BtnNew_Click(object sender, EventArgs e)
@@ -89,6 +93,7 @@ namespace Manager
             if (f.ShowDialog() == DialogResult.OK)
             {
                 Steps.Items.Add(f.Step);
+                Steps.SelectedItem = f.Step;
 
                 _modified = true;
             }
@@ -97,7 +102,6 @@ namespace Manager
         private void BtnEdit_Click(object sender, EventArgs e)
         {
             var step = Steps.SelectedItem as Step;
-            if (step == null) return;
 
             var f = new FrmStep();
             f.Step = step;
@@ -112,7 +116,6 @@ namespace Manager
         private void BtnRemove_Click(object sender, EventArgs e)
         {
             var step = Steps.SelectedItem as Step;
-            if (step == null) return;
 
             if (MessageBox.Show($"Delete Step '{step.Name}'?", "Delete Step",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -126,10 +129,7 @@ namespace Manager
         private void MoveStep(int flag)
         {
             var index = Steps.SelectedIndex;
-            if (index == -1) return;
-
             var newIndex = index + flag;
-            if (newIndex < 0 || newIndex > Steps.Items.Count-1) return;
 
             var step = Steps.Items[index];
 
@@ -174,5 +174,11 @@ namespace Manager
                 }
             }
         }
+
+        private void Steps_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            UpdStepsButtons();
+        }
+
     }
 }
