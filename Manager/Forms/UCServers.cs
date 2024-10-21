@@ -1,8 +1,6 @@
 ﻿using Manager.Storage;
 using Manager.Theme;
 using Manager.Utility;
-using Renci.SshNet;
-using Renci.SshNet.Common;
 
 namespace Manager
 {
@@ -25,13 +23,11 @@ namespace Manager
         private void UCServers_Load(object sender, EventArgs e)
         {
             _listEngine.Init();
-            UpdConnectionButtons();
         }
 
         private void List_SelectedIndexChanged(object sender, EventArgs e)
         {
             _listEngine.UpdateButtons();
-            UpdConnectionButtons();
         }
 
         private void BtnAdd_Click(object sender, EventArgs e)
@@ -54,9 +50,7 @@ namespace Manager
             if (e.Index == -1) return;
             var server = List.Items[e.Index] as Server;
 
-            DrawItemEx.Draw(e, server.Status == ServerStatus.CONNECTED ?
-                Properties.Resources.linux_connected
-                : Properties.Resources.server_blue, server.Name, Color.White, Vars.SELECTED);
+            DrawItemEx.Draw(e, Properties.Resources.server_blue, server.Name, Color.White, Vars.SELECTED);
         }
 
         private void List_DoubleClick(object sender, EventArgs e)
@@ -74,93 +68,5 @@ namespace Manager
             _listEngine.MoveDown();
         }
 
-        private void UpdConnectionButtons()
-        {
-            var server = List.SelectedItem as Server;
-
-            BtnConnect.Enabled = server?.Status == ServerStatus.DISCONNECTED;
-            BtnDisconnect.Enabled = server?.Status == ServerStatus.CONNECTED;
-        }
-
-        private void ChangeConnectionStatus(Server server, ServerStatus status)
-        {
-            Invoke(() =>
-            {
-                server.Status = status;
-
-                UpdConnectionButtons();
-                List.Invalidate();
-            });
-        }
-
-        private void BtnConnect_Click(object sender, EventArgs e)
-        {
-            var server = List.SelectedItem as Server;
-
-            ChangeConnectionStatus(server, ServerStatus.CONNECTING);
-
-            server.Tunnel = new SshClient(server.Host, server.Port, server.User, server.Password);
-            server.Tunnel.ErrorOccurred += Tunnel_ErrorOccurred;
-            server.Tunnel.ServerIdentificationReceived += Tunnel_ServerIdentificationReceived;
-
-            LogServer(server, "Connecting...");
-
-            Task.Run(() =>
-            {
-                try
-                {
-                    server.Tunnel.Connect();
-                    ChangeConnectionStatus(server, ServerStatus.CONNECTED);
-
-                    LogServer(server, "Connected successfully!", Color.Lime);
-                }
-                catch (Exception ex)
-                {
-                    ChangeConnectionStatus(server, ServerStatus.DISCONNECTED);
-                    LogServer(server, "ERROR ON CONNECTING: " + ex.Message, Color.Crimson);
-                }
-            });
-        }
-
-        private static Server GetServerFromTunnel(SshClient tunnel)
-        {
-            return Vars.Config.Servers.Find(x => x.Tunnel == tunnel);
-        }
-
-        private static void LogServer(Server server, string message, Color? color = null)
-        {
-            LogService.Log($"{server.Name} > {message}", color);
-        }
-
-        private void Tunnel_ServerIdentificationReceived(object sender, SshIdentificationEventArgs e)
-        {
-            var server = GetServerFromTunnel((SshClient)sender);
-
-            LogServer(server, $"Server identification: {e.SshIdentification}");
-        }
-
-        private void Tunnel_ErrorOccurred(object sender, ExceptionEventArgs e)
-        {
-            var server = GetServerFromTunnel((SshClient)sender);
-
-            LogServer(server, $"ERROR: {e.Exception.Message}", Color.Crimson);
-            SetDisconnected(server);
-        }
-
-        private void BtnDisconnect_Click(object sender, EventArgs e)
-        {
-            var server = List.SelectedItem as Server;
-
-            LogServer(server, "Disconnecting...");
-            server.Tunnel.Disconnect();
-
-            SetDisconnected(server);
-        }
-
-        private void SetDisconnected(Server server)
-        {
-            LogServer(server, "Disconnected.");
-            ChangeConnectionStatus(server, ServerStatus.DISCONNECTED);
-        }
     }
 }

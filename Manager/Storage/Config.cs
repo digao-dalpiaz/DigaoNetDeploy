@@ -1,7 +1,4 @@
-﻿using Newtonsoft.Json;
-using Renci.SshNet;
-
-namespace Manager.Storage
+﻿namespace Manager.Storage
 {
     internal class Config
     {
@@ -12,11 +9,6 @@ namespace Manager.Storage
     public abstract class NamedClass
     {
         public string Name;
-    }
-
-    public enum ServerStatus
-    {
-        DISCONNECTED, CONNECTING, CONNECTED
     }
 
     public class Server : NamedClass
@@ -32,12 +24,6 @@ namespace Manager.Storage
         {
             return Name;
         }
-
-        [JsonIgnore]
-        public ServerStatus Status = ServerStatus.DISCONNECTED;
-
-        [JsonIgnore]
-        public SshClient Tunnel;
     }
 
     public class Pipeline : NamedClass

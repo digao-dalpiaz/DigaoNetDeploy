@@ -35,8 +35,6 @@
             BtnDelete = new ToolStripButton();
             BtnUp = new ToolStripButton();
             BtnDown = new ToolStripButton();
-            BtnConnect = new ToolStripButton();
-            BtnDisconnect = new ToolStripButton();
             ToolBar.SuspendLayout();
             SuspendLayout();
             // 
@@ -59,7 +57,7 @@
             // ToolBar
             // 
             ToolBar.ImageScalingSize = new Size(24, 24);
-            ToolBar.Items.AddRange(new ToolStripItem[] { BtnAdd, BtnEdit, BtnDelete, BtnUp, BtnDown, BtnConnect, BtnDisconnect });
+            ToolBar.Items.AddRange(new ToolStripItem[] { BtnAdd, BtnEdit, BtnDelete, BtnUp, BtnDown });
             ToolBar.Location = new Point(0, 0);
             ToolBar.Name = "ToolBar";
             ToolBar.Size = new Size(755, 31);
@@ -110,24 +108,6 @@
             BtnDown.Text = "Move Down";
             BtnDown.Click += BtnDown_Click;
             // 
-            // BtnConnect
-            // 
-            BtnConnect.Image = Properties.Resources.connect;
-            BtnConnect.ImageTransparentColor = Color.Magenta;
-            BtnConnect.Name = "BtnConnect";
-            BtnConnect.Size = new Size(80, 28);
-            BtnConnect.Text = "Connect";
-            BtnConnect.Click += BtnConnect_Click;
-            // 
-            // BtnDisconnect
-            // 
-            BtnDisconnect.Image = Properties.Resources.disconnect;
-            BtnDisconnect.ImageTransparentColor = Color.Magenta;
-            BtnDisconnect.Name = "BtnDisconnect";
-            BtnDisconnect.Size = new Size(94, 28);
-            BtnDisconnect.Text = "Disconnect";
-            BtnDisconnect.Click += BtnDisconnect_Click;
-            // 
             // UCServers
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -152,7 +132,5 @@
         private ToolStripButton BtnDelete;
         private ToolStripButton BtnUp;
         private ToolStripButton BtnDown;
-        private ToolStripButton BtnConnect;
-        private ToolStripButton BtnDisconnect;
     }
 }
