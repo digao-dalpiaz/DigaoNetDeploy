@@ -14,6 +14,7 @@ namespace Manager
         {
             InitializeComponent();
 
+            this.Text += " " + Assembly.GetExecutingAssembly().GetName().Version.ToString();
             this.Icon = Icon.ExtractAssociatedIcon(Assembly.GetExecutingAssembly().Location);
 
             LogService.LogControl = this.EdLog;
