@@ -5,10 +5,11 @@ namespace Manager.Utility
     internal class OperationsExec(OperationParams _params)
     {
 
-        private string GetArg(string key)
+        private string GetArg(string key, string defaultValue = null)
         {
             if (!_params.Arguments.TryGetValue(key, out string value))
             {
+                if (defaultValue != null) return defaultValue;
                 throw new Exception($"Argument '{key}' not found");
             }
 
