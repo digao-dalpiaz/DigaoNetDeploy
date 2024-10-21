@@ -7,24 +7,12 @@ namespace Manager.Utility
 
         private string GetArg(string key)
         {
-            var value = _params.Arguments[key];
-
-            if (string.IsNullOrEmpty(value))
-            {
-                throw new Exception($"Argument '{key}' is empty");
-            }
-
-            return value;
+            return _params.Arguments[key];
         }
 
         private bool GetBoolArg(string key)
         {
-            var value = GetArg(key);
-
-            if (value == "Y") return true;
-            if (value == "N") return false;
-
-            throw new Exception($"Boolean argument '{key}' with invalid value '{value}'");
+            return GetArg(key) == "Y";
         }
 
         public void CopyFile()

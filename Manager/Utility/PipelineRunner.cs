@@ -133,6 +133,16 @@ namespace Manager.Utility
                     value = arg.Default;
                 }
 
+                if (string.IsNullOrEmpty(value))
+                {
+                    throw new Exception($"Argument '{arg.Ident}' is empty");
+                }
+
+                if (arg.Kind == ArgumentKind.BOOLEAN)
+                {
+                    if (!new string[]{ "Y", "N" }.Contains(value)) throw new Exception($"Boolean argument '{arg.Ident}' with invalid value '{value}'");
+                }
+
                 args.Add(arg.Ident, value);
             }
 
