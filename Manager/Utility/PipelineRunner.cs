@@ -12,11 +12,40 @@ namespace Manager.Utility
         private SshClient _ssh;
         private SftpClient _sftp;
 
+        private List<StepDetails> _stepDetailList;
+        class StepDetails
+        {
+            public Step Step;
+            public OperationDef OpDef;
+            public ArgumentsDictionary Args;
+        }
+
+        private void BuildStepDetailsList()
+        {
+            _stepDetailList = [];
+
+            foreach (var step in _pipeline.Steps)
+            {
+                var opDef = OperationDefList.Operations.Find(x => x.Ident == step.Operation);
+                if (opDef == null) throw new Exception($"Operation '{step.Operation}' not found");
+
+                var args = GetArguments(step, opDef);
+
+                var d = new StepDetails();
+                d.Step = step;
+                d.OpDef = opDef;
+                d.Args = args;
+                _stepDetailList.Add(d);
+            }
+        }
+
         public void Run()
         {
             bool success = false;
             try
             {
+                BuildStepDetailsList();
+
                 FindServer();
                 CreateSSH();
 
@@ -81,23 +110,17 @@ namespace Manager.Utility
 
         private void ExecuteSteps()
         {
-            foreach (var step in _pipeline.Steps)
+            foreach (var d in _stepDetailList)
             {
-                LogService.Log($"Step {step.Name}", Color.Yellow);
-
-                var opDef = OperationDefList.Operations.Find(x => x.Ident == step.Operation);
-                if (opDef == null) throw new Exception($"Operation '{step.Operation}' not found");
-
-                LogService.Log("Operation: " + opDef.Name, Color.RebeccaPurple);
-
-                var args = GetArguments(step, opDef);
+                LogService.Log($"Step {d.Step.Name}", Color.Yellow);
+                LogService.Log("Operation: " + d.OpDef.Name, Color.RebeccaPurple);
 
                 var parameters = new OperationParams();
-                parameters.Arguments = args;
+                parameters.Arguments = d.Args;
                 parameters.Server = _server;
                 parameters.GetSftp = GetSftp;
 
-                opDef.Action(parameters);
+                d.OpDef.Action(parameters);
             }
         }
 
@@ -140,7 +163,7 @@ namespace Manager.Utility
 
                 if (arg.Kind == ArgumentKind.BOOLEAN)
                 {
-                    if (!new string[]{ "Y", "N" }.Contains(value)) throw new Exception($"Boolean argument '{arg.Ident}' with invalid value '{value}'");
+                    if (!new string[] { "Y", "N" }.Contains(value)) throw new Exception($"Boolean argument '{arg.Ident}' with invalid value '{value}'");
                 }
 
                 args.Add(arg.Ident, value);
