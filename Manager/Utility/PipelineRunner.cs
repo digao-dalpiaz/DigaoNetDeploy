@@ -26,16 +26,23 @@ namespace Manager.Utility
 
             foreach (var step in _pipeline.Steps)
             {
-                var opDef = OperationDefList.Operations.Find(x => x.Ident == step.Operation);
-                if (opDef == null) throw new Exception($"Operation '{step.Operation}' not found");
+                try
+                {
+                    var opDef = OperationDefList.Operations.Find(x => x.Ident == step.Operation);
+                    if (opDef == null) throw new Exception($"Operation '{step.Operation}' not found");
 
-                var args = GetArguments(step, opDef);
+                    var args = GetArguments(step, opDef);
 
-                var d = new StepDetails();
-                d.Step = step;
-                d.OpDef = opDef;
-                d.Args = args;
-                _stepDetailList.Add(d);
+                    var d = new StepDetails();
+                    d.Step = step;
+                    d.OpDef = opDef;
+                    d.Args = args;
+                    _stepDetailList.Add(d);
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception($"Step '{step.Name}': {ex.Message}");
+                }
             }
         }
 
@@ -168,6 +175,9 @@ namespace Manager.Utility
 
                 args.Add(arg.Ident, value);
             }
+
+            var typedInvalid = typedArgs.Keys.Except(args.Keys);
+            if (typedInvalid.Any()) throw new Exception($"Invalid arguments: {string.Join(", ", typedInvalid)}");
 
             return args;
         }
