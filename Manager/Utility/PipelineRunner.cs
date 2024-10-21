@@ -130,11 +130,18 @@ namespace Manager.Utility
             {
                 _sftp = new SftpClient(_server.Host, _server.Port, _server.User, new PrivateKeyFile(_server.KeyFile));
 
+                _sftp.ErrorOccurred += SFTP_ErrorOccurred;
+
                 LogService.Log("Connecting to SFTP service...");
                 _sftp.Connect();
                 LogService.Log("Connected!");
             }
             return _sftp;
+        }
+
+        private void SFTP_ErrorOccurred(object sender, ExceptionEventArgs e)
+        {
+            LogService.Log("SFTP exception: " + e.Exception.Message, Color.Crimson);
         }
 
     }
