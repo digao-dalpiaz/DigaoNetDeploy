@@ -73,6 +73,16 @@ namespace Manager
             DialogResult = DialogResult.OK;
         }
 
+        private void UpdStepsButtons()
+        {
+            bool sel = Steps.SelectedIndex != -1;
+
+            BtnEdit.Enabled = sel;
+            BtnRemove.Enabled = sel;
+
+            //BtnUp.Enabled = 
+        }
+
         private void BtnNew_Click(object sender, EventArgs e)
         {
             var f = new FrmStep();

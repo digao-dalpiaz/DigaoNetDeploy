@@ -10,12 +10,12 @@ namespace Manager.Utility
 
         public void Init()
         {
-            UpdateButtons();
-
             foreach (var obj in _storageList)
             {
                 _listBox.Items.Add(obj);
             }
+
+            UpdateButtons();
         }
 
         public void UpdateButtons()
@@ -26,8 +26,8 @@ namespace Manager.Utility
             btnEdit.Enabled = selected;
             btnDelete.Enabled = selected;
 
-            btnMoveUp.Enabled = index > 0;
-            btnMoveDown.Enabled = index < _listBox.Items.Count-1;
+            btnMoveUp.Enabled = selected && index > 0;
+            btnMoveDown.Enabled = selected && index < _listBox.Items.Count-1;
         }
 
         private static PropertyInfo GetReturningObjProp()
