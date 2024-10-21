@@ -5,13 +5,9 @@ namespace Manager.Utility
     internal class OperationsExec(OperationParams _params)
     {
 
-        private string GetArg(string key, string defaultValue = null)
+        private string GetArg(string key)
         {
-            if (!_params.Arguments.TryGetValue(key, out string value))
-            {
-                if (defaultValue != null) return defaultValue;
-                throw new Exception($"Argument '{key}' not found");
-            }
+            var value = _params.Arguments[key];
 
             if (string.IsNullOrEmpty(value))
             {
@@ -21,9 +17,9 @@ namespace Manager.Utility
             return value;
         }
 
-        private bool GetBoolArg(string key, bool defaultValue = false)
+        private bool GetBoolArg(string key)
         {
-            var value = GetArg(key, defaultValue ? "Y" : "N");
+            var value = GetArg(key);
 
             if (value == "Y") return true;
             if (value == "N") return false;

@@ -29,8 +29,8 @@ namespace Manager.Definitions
                 [
                     new() { Ident = "LOCAL_FOLDER", Kind = ArgumentKind.STRING, Description = "Local folder (this machine)" },
                     new() { Ident = "REMOTE_FOLDER", Kind = ArgumentKind.STRING, Description = "Remote folder (server)" },
-                    new() { Ident = "DELETE_EXISTING_FILES", Kind = ArgumentKind.BOOLEAN, Optional = true, Description = "Delete existing files on server [default false]" },
-                    new() { Ident = "OVERWRITE_EXISTING_FILES", Kind = ArgumentKind.BOOLEAN, Optional = true, Description = "Overwrite existing files on server [default false]" },
+                    new() { Ident = "DELETE_EXISTING_FILES", Kind = ArgumentKind.BOOLEAN, Default = "N", Description = "Delete existing files on server" },
+                    new() { Ident = "OVERWRITE_EXISTING_FILES", Kind = ArgumentKind.BOOLEAN, Default = "N", Description = "Overwrite existing files on server" },
                 ],
                 Action = (p) => new OperationsExec(p).CopyFolder()
             },

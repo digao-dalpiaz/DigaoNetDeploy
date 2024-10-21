@@ -90,7 +90,7 @@ namespace Manager.Utility
 
                 LogService.Log("Operation: " + opDef.Name, Color.RebeccaPurple);
 
-                var args = GetArguments(step);
+                var args = GetArguments(step, opDef);
 
                 var parameters = new OperationParams();
                 parameters.Arguments = args;
@@ -101,9 +101,9 @@ namespace Manager.Utility
             }
         }
 
-        private static ArgumentsDictionary GetArguments(Step step)
+        private static ArgumentsDictionary GetArguments(Step step, OperationDef opDef)
         {
-            var args = new ArgumentsDictionary();
+            var typedArgs = new ArgumentsDictionary();
 
             var lines = step.Arguments.Split(Environment.NewLine);
             foreach (var line in lines.Select(x => x.Trim()))
@@ -116,9 +116,24 @@ namespace Manager.Utility
                 string key = line[..i].Trim();
                 string value = line[(i + 1)..].Trim();
 
-                if (args.ContainsKey(key)) throw new Exception($"Duplicated key '{key}'");
+                if (typedArgs.ContainsKey(key)) throw new Exception($"Duplicated key '{key}'");
 
-                args.Add(key, value);
+                typedArgs.Add(key, value);
+            }
+
+            //
+
+            var args = new ArgumentsDictionary();
+
+            foreach (var arg in opDef.Arguments)
+            {
+                if (!typedArgs.TryGetValue(arg.Ident, out string value))
+                {
+                    if (arg.Default == null) throw new Exception($"Argument '{arg.Ident}' not specifyed");
+                    value = arg.Default;
+                }
+
+                args.Add(arg.Ident, value);
             }
 
             return args;
