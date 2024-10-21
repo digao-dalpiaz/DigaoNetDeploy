@@ -21,6 +21,16 @@ namespace Manager.Utility
             return value;
         }
 
+        private bool GetBoolArg(string key, bool defaultValue = false)
+        {
+            var value = GetArg(key, defaultValue ? "Y" : "N");
+
+            if (value == "Y") return true;
+            if (value == "N") return false;
+
+            throw new Exception($"Boolean argument '{key}' with invalid value '{value}'");
+        }
+
         public void CopyFile()
         {
             string from = GetArg("LOCAL_FILE");
@@ -39,6 +49,9 @@ namespace Manager.Utility
             string from = GetArg("LOCAL_FOLDER");
             string to = GetArg("REMOTE_FOLDER");
 
+            bool deleteExistingFiles = GetBoolArg("DELETE_EXISTING_FILES");
+            bool overwriteExistingFiles = GetBoolArg("OVERWRITE_EXISTING_FILES");
+
             LogService.Log("Local Folder: " + from);
             LogService.Log("Remote Folder: " + to);
 
@@ -46,12 +59,15 @@ namespace Manager.Utility
 
             if (sftp.Exists(to))
             {
-                var remoteFiles = sftp.ListDirectory(to).Where(x => x.IsRegularFile).ToList();
-                if (remoteFiles.Count > 0) LogService.Log("Files to delete: " + remoteFiles.Count);
-                foreach (var file in remoteFiles)
+                if (deleteExistingFiles)
                 {
-                    LogService.Log($"Deleting existing file '{file.FullName}'...");
-                    sftp.DeleteFile(file.FullName);
+                    var remoteFiles = sftp.ListDirectory(to).Where(x => x.IsRegularFile).ToList();
+                    if (remoteFiles.Count > 0) LogService.Log("Files to delete: " + remoteFiles.Count);
+                    foreach (var file in remoteFiles)
+                    {
+                        LogService.Log($"Deleting existing file '{file.FullName}'...");
+                        sftp.DeleteFile(file.FullName);
+                    }
                 }
             }
             else
@@ -68,7 +84,7 @@ namespace Manager.Utility
                     string remoteFileName = to + "/" + Path.GetFileName(file);
 
                     LogService.Log($"Send file from '{file}' to '{remoteFileName}'");
-                    sftp.UploadFile(fileStream, remoteFileName);
+                    sftp.UploadFile(fileStream, remoteFileName, overwriteExistingFiles);
                 }
             }
         }

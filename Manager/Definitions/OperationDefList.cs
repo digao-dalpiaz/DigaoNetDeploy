@@ -14,8 +14,8 @@ namespace Manager.Definitions
                 Description = "Copy a file from this machine to server",
                 Arguments =
                 [
-                    new() { Ident = "LOCAL_FILE", Description = "Local file (this machine)" },
-                    new() { Ident = "REMOTE_FILE", Description = "Remote file (server)" },
+                    new() { Ident = "LOCAL_FILE", Kind = ArgumentKind.STRING, Description = "Local file (this machine)" },
+                    new() { Ident = "REMOTE_FILE", Kind = ArgumentKind.STRING, Description = "Remote file (server)" },
                 ],
                 Action = (p) => new OperationsExec(p).CopyFile()
             },
@@ -27,8 +27,10 @@ namespace Manager.Definitions
                 Description = "Copy a folder from this machine to server",
                 Arguments =
                 [
-                    new() { Ident = "LOCAL_FOLDER", Description = "Local folder (this machine)" },
-                    new() { Ident = "REMOTE_FOLDER", Description = "Remote folder (server)" },
+                    new() { Ident = "LOCAL_FOLDER", Kind = ArgumentKind.STRING, Description = "Local folder (this machine)" },
+                    new() { Ident = "REMOTE_FOLDER", Kind = ArgumentKind.STRING, Description = "Remote folder (server)" },
+                    new() { Ident = "DELETE_EXISTING_FILES", Kind = ArgumentKind.BOOLEAN, Optional = true, Description = "Delete existing files on server [default false]" },
+                    new() { Ident = "OVERWRITE_EXISTING_FILES", Kind = ArgumentKind.BOOLEAN, Optional = true, Description = "Overwrite existing files on server [default false]" },
                 ],
                 Action = (p) => new OperationsExec(p).CopyFolder()
             },
