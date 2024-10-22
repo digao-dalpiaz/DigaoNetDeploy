@@ -7,7 +7,14 @@ namespace Manager.Utility
 
         private string GetArg(string key)
         {
-            return _params.Arguments[key];
+            string value = _params.Arguments[key];
+
+            foreach (var sVar in _params.EnvVars) 
+            {
+                value = value.Replace("{" + sVar.Key + "}", sVar.Value);
+            }
+
+            return value;
         }
 
         private bool GetBoolArg(string key)
