@@ -125,6 +125,8 @@ namespace Manager.Utility
             string file = _params.EnvVars["SLOT_FILE"];
 
             sftp.WriteAllText(file, slot);
+
+            LogService.Log($"Slot saved ({slot})");
         }
 
     }

@@ -72,6 +72,8 @@ namespace Manager.Utility
                 LogService.Log("ERROR: " + ex.Message, Color.Crimson);
             }
 
+            LogService.Log("");
+
             //close connections
             if (_sftp != null && _sftp.IsConnected)
             {
@@ -123,8 +125,9 @@ namespace Manager.Utility
         {
             foreach (var d in _stepDetailList)
             {
-                LogService.Log($"Step {d.Step.Name}", Color.Yellow);
-                LogService.Log("Operation: " + d.OpDef.Name, Color.RebeccaPurple);
+                LogService.Log("");
+                LogService.Log($"Step: {d.Step.Name}", Color.Yellow);
+                LogService.Log("Operation: " + d.OpDef.Name, Color.Cyan);
 
                 var parameters = new OperationParams();
                 parameters.Arguments = d.Args;

@@ -148,6 +148,9 @@
   <data name="step" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\step.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="step_disabled" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\step_disabled.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="up" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\up.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
