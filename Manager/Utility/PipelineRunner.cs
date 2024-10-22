@@ -28,6 +28,8 @@ namespace Manager.Utility
 
             foreach (var step in _pipeline.Steps)
             {
+                if (!step.Enabled) continue;
+
                 try
                 {
                     var opDef = OperationDefList.Operations.Find(x => x.Ident == step.Operation);
