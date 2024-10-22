@@ -38,6 +38,7 @@
             EdArgs = new TextBox();
             label3 = new Label();
             label4 = new Label();
+            CkEnabled = new CheckBox();
             SuspendLayout();
             // 
             // EdName
@@ -136,6 +137,18 @@
             label4.TabIndex = 16;
             label4.Text = "Arguments";
             // 
+            // CkEnabled
+            // 
+            CkEnabled.AutoSize = true;
+            CkEnabled.Checked = true;
+            CkEnabled.CheckState = CheckState.Checked;
+            CkEnabled.Location = new Point(480, 32);
+            CkEnabled.Name = "CkEnabled";
+            CkEnabled.Size = new Size(68, 19);
+            CkEnabled.TabIndex = 17;
+            CkEnabled.Text = "Enabled";
+            CkEnabled.UseVisualStyleBackColor = true;
+            // 
             // FrmStep
             // 
             AcceptButton = BtnOK;
@@ -143,6 +156,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             CancelButton = BtnCancel;
             ClientSize = new Size(793, 474);
+            Controls.Add(CkEnabled);
             Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(EdArgs);
@@ -177,5 +191,6 @@
         private TextBox EdArgs;
         private Label label3;
         private Label label4;
+        private CheckBox CkEnabled;
     }
 }

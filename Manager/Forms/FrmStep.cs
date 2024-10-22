@@ -32,6 +32,7 @@ namespace Manager.Forms
 
                 EdName.Text = Step.Name;
                 EdArgs.Text = Step.Arguments;
+                CkEnabled.Checked = Step.Enabled;
 
                 var op = OperationDefList.Operations.Find(x => x.Ident == Step.Operation);
                 if (op != null) EdOperation.SelectedItem = op;
@@ -60,6 +61,7 @@ namespace Manager.Forms
             Step.Name = EdName.Text;
             Step.Operation = operation.Ident;
             Step.Arguments = EdArgs.Text;
+            Step.Enabled = CkEnabled.Checked;
 
             DialogResult = DialogResult.OK;
         }

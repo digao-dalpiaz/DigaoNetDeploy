@@ -35,6 +35,7 @@
     public class Step
     {
         public string Name;
+        public bool Enabled;
         public string Operation;
         public string Arguments;
     }
