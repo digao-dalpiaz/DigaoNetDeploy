@@ -8,5 +8,7 @@ namespace Manager.Definitions
         public ArgumentsDictionary Arguments;
         public Server Server;
         public Func<SftpClient> GetSftp;
+
+        public EnvVarsDictionary EnvVars;
     }
 }

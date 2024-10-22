@@ -20,6 +20,8 @@ namespace Manager.Utility
             public ArgumentsDictionary Args;
         }
 
+        private EnvVarsDictionary _envVars = [];
+
         private void BuildStepDetailsList()
         {
             _stepDetailList = [];
@@ -126,6 +128,7 @@ namespace Manager.Utility
                 parameters.Arguments = d.Args;
                 parameters.Server = _server;
                 parameters.GetSftp = GetSftp;
+                parameters.EnvVars = _envVars;
 
                 d.OpDef.Action(parameters);
             }

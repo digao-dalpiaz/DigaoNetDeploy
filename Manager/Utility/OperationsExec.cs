@@ -79,5 +79,53 @@ namespace Manager.Utility
             }
         }
 
+        public void GetNextCDSlot()
+        {
+            string file = GetArg("SLOT_FILE");
+            string portA = GetArg("PORT_A");
+            string portB = GetArg("PORT_B");
+
+            var sftp = _params.GetSftp();
+
+            string nextSlot;
+
+            if (sftp.Exists(file))
+            {
+                string contents = sftp.ReadAllText(file).Trim();
+
+                switch (contents)
+                {
+                    case "A":
+                        nextSlot = "B";
+                        break;
+                    case "B":
+                        nextSlot = "A";
+                        break;
+                    default:
+                        throw new Exception($"Invalid current slot in slot file ('{contents}')");
+                }
+            }
+            else
+            {
+                nextSlot = "A";
+            }
+
+            _params.EnvVars["SLOT_FILE"] = file;
+            _params.EnvVars["NEXT_SLOT"] = nextSlot;
+            _params.EnvVars["NEXT_PORT"] = nextSlot == "A" ? portA : portB;
+
+            LogService.Log("Next Slot = " + nextSlot);
+        }
+
+        public void SaveCDSlot()
+        {
+            var sftp = _params.GetSftp();
+
+            string slot = _params.EnvVars["NEXT_SLOT"];
+            string file = _params.EnvVars["SLOT_FILE"];
+
+            sftp.WriteAllText(file, slot);
+        }
+
     }
 }
