@@ -132,6 +132,7 @@ namespace Manager.Utility
                 var parameters = new OperationParams();
                 parameters.Arguments = d.Args;
                 parameters.Server = _server;
+                parameters.Ssh = _ssh;
                 parameters.GetSftp = GetSftp;
                 parameters.EnvVars = _envVars;
 

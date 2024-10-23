@@ -7,6 +7,7 @@ namespace Manager.Definitions
     {
         public ArgumentsDictionary Arguments;
         public Server Server;
+        public SshClient Ssh;
         public Func<SftpClient> GetSftp;
 
         public EnvVarsDictionary EnvVars;

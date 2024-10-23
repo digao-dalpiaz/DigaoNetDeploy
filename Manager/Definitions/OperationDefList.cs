@@ -9,6 +9,18 @@ namespace Manager.Definitions
         [
             new()
             {
+                Ident = "EXEC_CMD",
+                Name = "Execute command",
+                Description = "Execute a command in server side",
+                Arguments =
+                [
+                    new() { Ident = "CMD", Kind = ArgumentKind.STRING, Description = "Command to execute" },
+                ],
+                Action = (p) => new OperationsExec(p).ExecCmd()
+            },
+
+            new()
+            {
                 Ident = "COPY_FILE",
                 Name = "Copy file",
                 Description = "Copy a file from this machine to server",
@@ -16,6 +28,8 @@ namespace Manager.Definitions
                 [
                     new() { Ident = "LOCAL_FILE", Kind = ArgumentKind.STRING, Description = "Local file (this machine)" },
                     new() { Ident = "REMOTE_FILE", Kind = ArgumentKind.STRING, Description = "Remote file (server)" },
+                    new() { Ident = "OVERWRITE", Kind = ArgumentKind.BOOLEAN, Default = "N", Description = "Overwrite existing file on server" },
+                    new() { Ident = "REPLACE_VARS", Kind = ArgumentKind.BOOLEAN, Default = "N", Description = "Replace environment variables on remote file" },
                 ],
                 Action = (p) => new OperationsExec(p).CopyFile()
             },
@@ -37,27 +51,17 @@ namespace Manager.Definitions
 
             new()
             {
-                Ident = "GET_NEXT_CD_SLOT",
-                Name = "Get Next CD Slot",
-                Description = "Retrieve next slot for Continuous Delivery from server",
+                Ident = "GET_CD_SLOT",
+                Name = "Get CD Slot",
+                Description = "Retrieve slot for Continuous Delivery from server",
                 Arguments =
                 [
-                    new() { Ident = "SLOT_FILE", Kind = ArgumentKind.STRING, Description = "Remote slot file (server)" },
+                    new() { Ident = "SERVICE_A", Kind = ArgumentKind.STRING, Description = "Service name for slot A" },
+                    new() { Ident = "SERVICE_B", Kind = ArgumentKind.STRING, Description = "Service name for slot B" },
                     new() { Ident = "PORT_A", Kind = ArgumentKind.STRING, Default = "0", Description = "Port for slot A" },
                     new() { Ident = "PORT_B", Kind = ArgumentKind.STRING, Default = "0", Description = "Port for slot B" },
                 ],
-                Action = (p) => new OperationsExec(p).GetNextCDSlot()
-            },
-
-            new()
-            {
-                Ident = "SAVE_CD_SLOT",
-                Name = "Save CD Slot",
-                Description = "Save new slot into slot file on server (require previous slot retrieving)",
-                Arguments =
-                [
-                ],
-                Action = (p) => new OperationsExec(p).SaveCDSlot()
+                Action = (p) => new OperationsExec(p).GetCDSlot()
             },
         ];
 

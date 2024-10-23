@@ -1,19 +1,23 @@
 ﻿using Manager.Definitions;
+using System.Text;
 
 namespace Manager.Utility
 {
     internal class OperationsExec(OperationParams _params)
     {
 
+        private void ReplaceAllEnvVars(ref string input)
+        {
+            foreach (var sVar in _params.EnvVars)
+            {
+                input = input.Replace("{$" + sVar.Key + "}", sVar.Value);
+            }
+        }
+
         private string GetArg(string key)
         {
             string value = _params.Arguments[key];
-
-            foreach (var sVar in _params.EnvVars) 
-            {
-                value = value.Replace("{" + sVar.Key + "}", sVar.Value);
-            }
-
+            ReplaceAllEnvVars(ref value);
             return value;
         }
 
@@ -22,17 +26,59 @@ namespace Manager.Utility
             return GetArg(key) == "Y";
         }
 
+        public void ExecCmd()
+        {
+            string cmdLine = GetArg("CMD");
+
+            LogService.Log("> " + cmdLine);
+
+            var command = _params.Ssh.CreateCommand(cmdLine);
+            command.Execute();
+
+            if (!string.IsNullOrEmpty(command.Result))
+            {
+                LogService.Log(command.Result.Trim(), Color.Bisque);
+            }
+
+            if (command.ExitStatus != 0)
+            {
+                throw new Exception("Error on command: " + command.Error.Trim());
+            }
+        }
+
         public void CopyFile()
         {
             string from = GetArg("LOCAL_FILE");
             string to = GetArg("REMOTE_FILE");
+
+            bool overwrite = GetBoolArg("OVERWRITE");
+            bool replaceVars = GetBoolArg("REPLACE_VARS");
 
             LogService.Log("Local File: " + from);
             LogService.Log("Remote File: " + to);
 
             var sftp = _params.GetSftp();
 
+            using (var fileStream = new FileStream(from, FileMode.Open, FileAccess.Read))
+            {
+                Stream finalStream;
+                if (replaceVars)
+                {
+                    string content;
+                    using (var reader = new StreamReader(fileStream, Encoding.UTF8))
+                    {
+                        content = reader.ReadToEnd();
+                    }
+                    ReplaceAllEnvVars(ref content);
+                    finalStream = new MemoryStream(Encoding.UTF8.GetBytes(content));
+                }
+                else
+                {
+                    finalStream = fileStream;
+                }
 
+                sftp.UploadFile(finalStream, to, overwrite);
+            }
         }
 
         public void CopyFolder()
@@ -86,54 +132,30 @@ namespace Manager.Utility
             }
         }
 
-        public void GetNextCDSlot()
+        public void GetCDSlot()
         {
-            string file = GetArg("SLOT_FILE");
+            string serviceA = GetArg("SERVICE_A");
+            string serviceB = GetArg("SERVICE_B");
+
             string portA = GetArg("PORT_A");
             string portB = GetArg("PORT_B");
 
-            var sftp = _params.GetSftp();
-
-            string nextSlot;
-
-            if (sftp.Exists(file))
+            bool IsActive(string service)
             {
-                string contents = sftp.ReadAllText(file).Trim();
-
-                switch (contents)
-                {
-                    case "A":
-                        nextSlot = "B";
-                        break;
-                    case "B":
-                        nextSlot = "A";
-                        break;
-                    default:
-                        throw new Exception($"Invalid current slot in slot file ('{contents}')");
-                }
-            }
-            else
-            {
-                nextSlot = "A";
+                var cmd = _params.Ssh.RunCommand($"systemctl is-active {service}");
+                return cmd.ExitStatus == 0;
             }
 
-            _params.EnvVars["SLOT_FILE"] = file;
-            _params.EnvVars["NEXT_SLOT"] = nextSlot;
-            _params.EnvVars["NEXT_PORT"] = nextSlot == "A" ? portA : portB;
+            bool activeA = IsActive(serviceA);
+            bool activeB = IsActive(serviceB);
 
-            LogService.Log("Next Slot = " + nextSlot);
-        }
+            if (activeA && activeB) throw new Exception("Both slots are active!");
 
-        public void SaveCDSlot()
-        {
-            var sftp = _params.GetSftp();
+            _params.EnvVars["SLOT_CURR_FLAG"] = activeA ? "A" : "B";
+            _params.EnvVars["SLOT_NEXT_FLAG"] = !activeA ? "A" : "B";
+            _params.EnvVars["SLOT_NEXT_PORT"] = !activeA ? portA : portB;
 
-            string slot = _params.EnvVars["NEXT_SLOT"];
-            string file = _params.EnvVars["SLOT_FILE"];
-
-            sftp.WriteAllText(file, slot);
-
-            LogService.Log($"Slot saved ({slot})");
+            LogService.Log("Next Slot = " + _params.EnvVars["SLOT_NEXT_FLAG"]);
         }
 
     }
